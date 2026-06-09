@@ -1,0 +1,10 @@
+{
+  "extraction_id": "55c030d365b14d9596e42beaaaee9174",
+  "original_filename": "朱文潇_软件工程.pdf",
+  "pdf_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/uploads/55c030d365b14d9596e42beaaaee9174.pdf",
+  "txt_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/extracted_text/55c030d365b14d9596e42beaaaee9174.txt",
+  "text_length": 2717,
+  "entity_types": [],
+  "relations": [],
+  "next_stage": "chunk_service"
+}

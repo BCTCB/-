@@ -1,0 +1,102 @@
+{
+  "extraction_id": "0bcc055f27524a7e9322990ec573e4d6",
+  "source_txt_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/extracted_text/0bcc055f27524a7e9322990ec573e4d6.txt",
+  "strategy_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/strategy/0bcc055f27524a7e9322990ec573e4d6_split_strategy.json",
+  "strategy": {
+    "document_structure_analysis": {
+      "structure_type": "item_based",
+      "structure_description": "资料是一份个人简历，包含个人信息、求职意向、个人优势、专业技能、项目经历、教育经历、资格证书、社团经历等部分。每个部分由标题（如“个人优势”“专业技能”“项目经历”）引导，项目经历下又包含多个项目（如“智能在线测评与互动答题平台Demo”“农业场景AI 害虫识别与检测项目”等），每个项目有项目名称、时间、职责描述和成果。整体结构是标题-内容块，内容块内以项目符号列表（•）组织。",
+      "main_organization_signals": [
+        "资料以简历标题（如“个人优势”“专业技能”“项目经历”）作为主要结构划分",
+        "项目经历部分包含多个项目，每个项目有独立标题（项目名称）和时间",
+        "内容以项目符号（•）列表形式呈现，但列表项之间没有明确的结构边界",
+        "没有章节、编号标题、中文数字标题等传统文档结构"
+      ]
+    },
+    "recommended_split_strategy": {
+      "strategy_name": "按简历主要部分（一级标题）切分，项目经历部分按项目名称（二级标题）进一步切分",
+      "strategy_level": "two_level",
+      "reason": "资料具有明确的层级结构：一级标题（如“个人优势”“专业技能”“项目经历”）将内容划分为主要部分，其中“项目经历”部分包含多个独立项目，每个项目有明确的名称和时间，适合作为二级切分单元。其他部分（如“个人优势”“专业技能”）内容较短，无需进一步切分。",
+      "split_unit": "一级切分单元为简历的主要部分（如“个人优势”“专业技能”“项目经历”），二级切分单元为项目经历中的每个项目",
+      "split_unit_should_contain": [
+        "一级切分单元应包含该部分标题及其下的所有内容",
+        "二级切分单元（项目）应包含项目名称、时间、职责描述和成果"
+      ]
+    },
+    "split_rules": {
+      "primary_split_rule": "以简历中的主要部分标题（如“个人优势”“专业技能”“项目经历”“教育经历”“资格证书”“社团经历”）作为一级切分边界，每个标题及其后续内容构成一个一级切分单元",
+      "secondary_split_rule": "在“项目经历”部分内部，以项目名称（如“智能在线测评与互动答题平台Demo”“农业场景AI 害虫识别与检测项目”“基于UDP 的可靠传输协议（URP）”）作为二级切分边界，每个项目名称及其后续内容（直到下一个项目名称或部分结束）构成一个二级切分单元",
+      "start_boundary_rule": "一级切分单元以匹配到的部分标题行开始；二级切分单元以匹配到的项目名称行开始",
+      "end_boundary_rule": "一级切分单元在下一个一级标题或文档结束时结束；二级切分单元在下一个项目名称或一级标题或文档结束时结束",
+      "context_retention_rule": "每个切分单元应保留其所属的上级标题（如项目经历中的项目应保留“项目经历”作为父标题）",
+      "metadata_fields": [
+        "chunk_id",
+        "title",
+        "parent_title",
+        "start_char",
+        "end_char",
+        "content"
+      ]
+    },
+    "executable_split_config": {
+      "split_mode": "two_level_regex",
+      "primary_unit_name": "简历部分",
+      "secondary_unit_name": "项目",
+      "primary_start_patterns": [
+        "^(?:个人优势|专业技能|项目经历|教育经历|资格证书|社团经历)"
+      ],
+      "secondary_start_patterns": [
+        "^[\\u4e00-\\u9fa5a-zA-Z0-9\\s（）()]+\\d{4}\\.\\d{2}-\\d{4}\\.\\d{2}$"
+      ],
+      "parent_context_patterns": [
+        "^(?:个人优势|专业技能|项目经历|教育经历|资格证书|社团经历)"
+      ],
+      "end_boundary_rule": "next_primary_or_secondary_start",
+      "keep_parent_context": true,
+      "metadata_fields": [
+        "chunk_id",
+        "title",
+        "parent_title",
+        "start_char",
+        "end_char",
+        "content"
+      ],
+      "fallback": {
+        "enabled": true,
+        "method": "generic_heading_then_fixed_length",
+        "max_chars": 3000,
+        "overlap": 300
+      }
+    },
+    "special_case_handling": [
+      {
+        "case": "项目名称可能包含括号（如“基于UDP 的可靠传输协议（URP）”）",
+        "handling": "二级正则已包含括号匹配，可正常识别"
+      },
+      {
+        "case": "部分标题（如“教育经历”）后直接跟随内容，没有项目符号列表",
+        "handling": "按一级切分规则正常切分，内容完整保留"
+      },
+      {
+        "case": "“社团经历”部分包含子标题（如“COMP6080 前端网页开发课程项目组”），但子标题格式与项目名称类似",
+        "handling": "二级正则可能匹配到这些子标题，但它们在“社团经历”部分内，可视为二级切分单元，或作为特殊情况处理，不强制切分"
+      }
+    ],
+    "not_recommended_strategies": [
+      {
+        "strategy": "按固定长度切分",
+        "reason": "资料具有明确的结构标题，按固定长度切分会破坏标题与内容的完整性，不利于后续知识图谱抽取"
+      },
+      {
+        "strategy": "按项目符号（•）切分",
+        "reason": "项目符号列表项是内容的一部分，不是结构边界，切分后每个单元过于碎片化，失去上下文"
+      }
+    ],
+    "final_decision": {
+      "use_fixed_length_chunking": false,
+      "need_second_pass_split": true,
+      "recommended_for_kg_extraction": "一级切分单元为简历的主要部分（如“个人优势”“专业技能”“项目经历”），二级切分单元为项目经历中的每个项目"
+    }
+  },
+  "next_stage": "chunk_generation"
+}

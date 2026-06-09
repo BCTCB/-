@@ -1,0 +1,81 @@
+{
+  "success": true,
+  "extraction_id": "b9babe51841244e8be3ac05902fa6dbc",
+  "source_graph_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/relation_cleaned_graphs/b9babe51841244e8be3ac05902fa6dbc_relation_cleaned_graph.json",
+  "overview": {
+    "node_count": 30,
+    "edge_count": 25,
+    "entity_type_count": 3,
+    "relation_type_count": 2
+  },
+  "quality": {
+    "score": 99,
+    "level": "good",
+    "deductions": [
+      {
+        "reason": "孤立节点占比较高",
+        "count": 1,
+        "penalty": 1
+      }
+    ]
+  },
+  "distributions": {
+    "entity_type_count": {
+      "技能": 19,
+      "项目描述": 8,
+      "计算机项目": 3
+    },
+    "relation_type_count": {
+      "包含": 23,
+      "掌握": 2
+    },
+    "node_source_chunk_count": 14,
+    "edge_source_chunk_count": 11
+  },
+  "structural_issues": {
+    "invalid_edge_count": 0,
+    "self_loop_edge_count": 0,
+    "duplicate_edge_count": 0,
+    "missing_relation_edge_count": 0,
+    "isolated_node_count": 1,
+    "connected_node_count": 29,
+    "invalid_edges_preview": [],
+    "self_loop_edges_preview": [],
+    "duplicate_edges_preview": [],
+    "missing_relation_edges_preview": [],
+    "isolated_node_ids_preview": [
+      "rn40"
+    ]
+  },
+  "content_issues": {
+    "missing_description_node_count": 0,
+    "missing_evidence_node_count": 0,
+    "vague_node_count": 0,
+    "vague_edge_count": 0,
+    "vague_nodes_preview": [],
+    "vague_edges_preview": [],
+    "duplicate_node_name_count": 0,
+    "duplicate_node_names_preview": []
+  },
+  "cleaning_summary": {
+    "exact_value_dedupe": {
+      "removed_duplicate_values": 0,
+      "deduped_key_count": 0
+    },
+    "semantic_node_merge": {
+      "merge_group_count": 6,
+      "merged_node_count": 20,
+      "warning_count": 0
+    },
+    "relation_cleaning": {
+      "relation_group_count": 0,
+      "renamed_relation_count": 0,
+      "removed_edge_count": 0,
+      "warning_count": 0
+    }
+  },
+  "recommendations": [
+    "人工复核孤立节点：重要概念可保留，泛化或噪声节点建议删除。"
+  ],
+  "next_stage": "final_graph_export"
+}

@@ -1,0 +1,2176 @@
+{
+  "extraction_id": "55c030d365b14d9596e42beaaaee9174",
+  "source_chunks_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/chunks/55c030d365b14d9596e42beaaaee9174_chunks.json",
+  "extraction_mode": "auto",
+  "allowed_entity_types": [],
+  "allowed_relation_types": [],
+  "ontology": {
+    "entity_types": [
+      "主题",
+      "概念",
+      "对象",
+      "事件",
+      "问题",
+      "原因",
+      "结果",
+      "方法",
+      "步骤",
+      "工具",
+      "指标",
+      "条件",
+      "结论",
+      "组织",
+      "人物",
+      "地点",
+      "时间",
+      "文档结构",
+      "其他"
+    ],
+    "relation_types": [
+      "包含",
+      "属于",
+      "导致",
+      "影响",
+      "解决",
+      "使用",
+      "产生",
+      "依赖",
+      "组成",
+      "解释",
+      "说明",
+      "对应",
+      "适用于",
+      "前置于",
+      "后续于",
+      "对比",
+      "评价",
+      "约束",
+      "输入",
+      "输出",
+      "相关"
+    ]
+  },
+  "report": {
+    "chunk_count": 1,
+    "processed_parts": 2,
+    "skipped_chunks": 0,
+    "node_count": 44,
+    "edge_count": 45,
+    "warning_count": 0,
+    "entity_type_count": {
+      "工具": 14,
+      "指标": 12,
+      "概念": 9,
+      "问题": 5,
+      "项目": 3,
+      "人物": 1,
+      "地点": 1,
+      "对象": 1,
+      "方法": 1,
+      "组织": 1,
+      "角色": 1,
+      "主题": 1
+    },
+    "relation_type_count": {
+      "使用": 25,
+      "包含": 10,
+      "相关": 7,
+      "属于": 3
+    },
+    "skipped_chunk_preview": []
+  },
+  "nodes": [
+    {
+      "id": "rn1",
+      "name": "朱文潇",
+      "canonical_name": "朱文潇",
+      "aliases": [],
+      "type": "人物",
+      "description": "求职者，24岁，籍贯开封，非党员，求职软件工程师实习生等岗位",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "朱文潇男｜24 岁｜籍贯：开封｜非党员"
+    },
+    {
+      "id": "rn2",
+      "name": "软件工程师实习生",
+      "canonical_name": "软件工程师实习生",
+      "aliases": [],
+      "type": "概念",
+      "description": "求职意向岗位之一",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "求职意向：软件工程师实习生/ 系统软件开发实习生/ AI 芯片软件实习生"
+    },
+    {
+      "id": "rn3",
+      "name": "系统软件开发实习生",
+      "canonical_name": "系统软件开发实习生",
+      "aliases": [],
+      "type": "概念",
+      "description": "求职意向岗位之一",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "求职意向：软件工程师实习生/ 系统软件开发实习生/ AI 芯片软件实习生"
+    },
+    {
+      "id": "rn4",
+      "name": "AI芯片软件实习生",
+      "canonical_name": "AI芯片软件实习生",
+      "aliases": [],
+      "type": "概念",
+      "description": "求职意向岗位之一",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "求职意向：软件工程师实习生/ 系统软件开发实习生/ AI 芯片软件实习生"
+    },
+    {
+      "id": "rn5",
+      "name": "上海",
+      "canonical_name": "上海",
+      "aliases": [],
+      "type": "地点",
+      "description": "期望工作城市",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "期望城市：上海"
+    },
+    {
+      "id": "rn6",
+      "name": "计算机科学专业",
+      "canonical_name": "计算机科学专业",
+      "aliases": [],
+      "type": "概念",
+      "description": "朱文潇的专业背景",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "计算机科学专业背景"
+    },
+    {
+      "id": "rn7",
+      "name": "C语言",
+      "canonical_name": "C语言",
+      "aliases": [
+        "C"
+      ],
+      "type": "工具",
+      "description": "编程语言，用于系统软件和底层开发",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "具备C、Python、Java、Shell 等编程基础"
+    },
+    {
+      "id": "rn8",
+      "name": "Python",
+      "canonical_name": "Python",
+      "aliases": [],
+      "type": "工具",
+      "description": "编程语言",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "具备C、Python、Java、Shell 等编程基础"
+    },
+    {
+      "id": "rn9",
+      "name": "Java",
+      "canonical_name": "Java",
+      "aliases": [],
+      "type": "工具",
+      "description": "编程语言",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "具备C、Python、Java、Shell 等编程基础"
+    },
+    {
+      "id": "rn10",
+      "name": "Shell",
+      "canonical_name": "Shell",
+      "aliases": [],
+      "type": "工具",
+      "description": "脚本语言",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "具备C、Python、Java、Shell 等编程基础"
+    },
+    {
+      "id": "rn11",
+      "name": "Linux",
+      "canonical_name": "Linux",
+      "aliases": [],
+      "type": "工具",
+      "description": "操作系统环境",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "熟悉Linux 环境"
+    },
+    {
+      "id": "rn12",
+      "name": "Git",
+      "canonical_name": "Git",
+      "aliases": [],
+      "type": "工具",
+      "description": "版本控制工具",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "Git 版本控制"
+    },
+    {
+      "id": "rn13",
+      "name": "Socket网络编程",
+      "canonical_name": "Socket网络编程",
+      "aliases": [],
+      "type": "概念",
+      "description": "网络编程技术",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "Socket 网络编程"
+    },
+    {
+      "id": "rn14",
+      "name": "MIPS指令集仿真器",
+      "canonical_name": "MIPS指令集仿真器",
+      "aliases": [
+        "轻量级MIPS 指令集仿真器"
+      ],
+      "type": "项目",
+      "description": "基于C语言实现的简化MIPS指令集仿真器项目",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "轻量级MIPS 指令集仿真器"
+    },
+    {
+      "id": "rn15",
+      "name": "基于UDP的可靠传输协议",
+      "canonical_name": "基于UDP的可靠传输协议",
+      "aliases": [
+        "URP"
+      ],
+      "type": "项目",
+      "description": "基于UDP Socket编程实现的可靠文件传输协议项目",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "基于UDP 的可靠传输协议（URP）"
+    },
+    {
+      "id": "rn16",
+      "name": "农业场景AI害虫识别与检测项目",
+      "canonical_name": "农业场景AI害虫识别与检测项目",
+      "aliases": [],
+      "type": "项目",
+      "description": "参与农业害虫图像检测与分类项目",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "农业场景AI 害虫识别与检测项目"
+    },
+    {
+      "id": "rn17",
+      "name": "PyTorch",
+      "canonical_name": "PyTorch",
+      "aliases": [],
+      "type": "工具",
+      "description": "深度学习框架",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "PyTorch、NumPy、CNN 模型训练"
+    },
+    {
+      "id": "rn18",
+      "name": "NumPy",
+      "canonical_name": "NumPy",
+      "aliases": [],
+      "type": "工具",
+      "description": "数值计算库",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "PyTorch、NumPy、CNN 模型训练"
+    },
+    {
+      "id": "rn19",
+      "name": "CNN",
+      "canonical_name": "CNN",
+      "aliases": [],
+      "type": "概念",
+      "description": "卷积神经网络模型",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "熟悉CNN、YOLO、Faster R-CNN 等模型评估流程"
+    },
+    {
+      "id": "rn20",
+      "name": "YOLO",
+      "canonical_name": "YOLO",
+      "aliases": [
+        "YOLOv11"
+      ],
+      "type": "概念",
+      "description": "目标检测模型",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "团队测试YOLOv11、Faster R-CNN"
+    },
+    {
+      "id": "rn21",
+      "name": "Faster R-CNN",
+      "canonical_name": "Faster R-CNN",
+      "aliases": [],
+      "type": "概念",
+      "description": "目标检测模型",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "团队测试YOLOv11、Faster R-CNN"
+    },
+    {
+      "id": "rn22",
+      "name": "AgroPest-12数据集",
+      "canonical_name": "AgroPest-12数据集",
+      "aliases": [],
+      "type": "对象",
+      "description": "农业害虫图像数据集",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "项目基于AgroPest-12 数据集"
+    },
+    {
+      "id": "rn23",
+      "name": "mAP",
+      "canonical_name": "mAP",
+      "aliases": [],
+      "type": "指标",
+      "description": "平均精度均值，模型评估指标；平均精度均值，用于评估模型性能",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001,fixed_0001__part_002",
+      "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估",
+      "merged_from_node_ids": [
+        "rn23",
+        "rn31"
+      ],
+      "merge_reason": "相同指标名称和描述，均为平均精度均值"
+    },
+    {
+      "id": "rn24",
+      "name": "Precision",
+      "canonical_name": "Precision",
+      "aliases": [
+        "精度"
+      ],
+      "type": "指标",
+      "description": "精确率，模型评估指标；精确率，评估模型预测正例的准确性",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001,fixed_0001__part_002",
+      "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估",
+      "merged_from_node_ids": [
+        "rn24",
+        "rn32"
+      ],
+      "merge_reason": "相同指标名称和描述，均为精确率"
+    },
+    {
+      "id": "rn25",
+      "name": "Recall",
+      "canonical_name": "Recall",
+      "aliases": [
+        "召回率"
+      ],
+      "type": "指标",
+      "description": "召回率，模型评估指标；召回率，评估模型识别正例的能力",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001,fixed_0001__part_002",
+      "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估",
+      "merged_from_node_ids": [
+        "rn25",
+        "rn33"
+      ],
+      "merge_reason": "相同指标名称和描述，均为召回率"
+    },
+    {
+      "id": "rn26",
+      "name": "F1",
+      "canonical_name": "F1",
+      "aliases": [
+        "F1分数"
+      ],
+      "type": "指标",
+      "description": "F1分数，模型评估指标；F1分数，精确率和召回率的调和平均",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001,fixed_0001__part_002",
+      "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估",
+      "merged_from_node_ids": [
+        "rn26",
+        "rn34"
+      ],
+      "merge_reason": "相同指标名称和描述，均为F1分数"
+    },
+    {
+      "id": "rn27",
+      "name": "Accuracy",
+      "canonical_name": "Accuracy",
+      "aliases": [
+        "准确率"
+      ],
+      "type": "指标",
+      "description": "准确率，模型评估指标；准确率，评估模型整体预测正确比例",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001,fixed_0001__part_002",
+      "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估",
+      "merged_from_node_ids": [
+        "rn27",
+        "rn35"
+      ],
+      "merge_reason": "相同指标名称和描述，均为准确率"
+    },
+    {
+      "id": "rn28",
+      "name": "AUC",
+      "canonical_name": "AUC",
+      "aliases": [],
+      "type": "指标",
+      "description": "AUC值，模型评估指标；ROC曲线下面积，评估模型分类性能",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001,fixed_0001__part_002",
+      "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估",
+      "merged_from_node_ids": [
+        "rn28",
+        "rn36"
+      ],
+      "merge_reason": "相同指标名称和描述，均为AUC值"
+    },
+    {
+      "id": "rn29",
+      "name": "LaTeX",
+      "canonical_name": "LaTeX",
+      "aliases": [],
+      "type": "工具",
+      "description": "文档排版系统",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": "LaTeX、英文技术文档阅读、技术报告撰写"
+    },
+    {
+      "id": "rn30",
+      "name": "计算机视觉方法",
+      "canonical_name": "计算机视觉方法",
+      "aliases": [],
+      "type": "概念",
+      "description": "需要进行开发、测试和对比的计算机视觉方法",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "需要对不同计算机视觉方法进行开发、测试和对比"
+    },
+    {
+      "id": "rn37",
+      "name": "YOLOv11",
+      "canonical_name": "YOLOv11",
+      "aliases": [],
+      "type": "工具",
+      "description": "目标检测模型",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+    },
+    {
+      "id": "rn38",
+      "name": "Faster R-CNN",
+      "canonical_name": "Faster R-CNN",
+      "aliases": [],
+      "type": "工具",
+      "description": "目标检测模型",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+    },
+    {
+      "id": "rn39",
+      "name": "EfficientNet-B0",
+      "canonical_name": "EfficientNet-B0",
+      "aliases": [],
+      "type": "工具",
+      "description": "深度学习分类模型",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+    },
+    {
+      "id": "rn40",
+      "name": "SVM + BoW",
+      "canonical_name": "SVM + BoW",
+      "aliases": [],
+      "type": "工具",
+      "description": "传统机器学习方法，支持向量机结合词袋模型",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+    },
+    {
+      "id": "rn41",
+      "name": "EnsembleWeighted Fusion",
+      "canonical_name": "EnsembleWeighted Fusion",
+      "aliases": [],
+      "type": "工具",
+      "description": "集成加权融合方案",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+    },
+    {
+      "id": "rn42",
+      "name": "多模型对比实验与方案评估流程",
+      "canonical_name": "多模型对比实验与方案评估流程",
+      "aliases": [],
+      "type": "方法",
+      "description": "完成的多模型对比实验与方案评估流程",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "完成多模型对比实验与方案评估流程"
+    },
+    {
+      "id": "rn43",
+      "name": "类别误判",
+      "canonical_name": "类别误判",
+      "aliases": [],
+      "type": "问题",
+      "description": "模型分类错误的问题",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "结合类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题进行结果复盘"
+    },
+    {
+      "id": "rn44",
+      "name": "检测框偏差",
+      "canonical_name": "检测框偏差",
+      "aliases": [],
+      "type": "问题",
+      "description": "目标检测中边界框定位不准确的问题",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "结合类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题进行结果复盘"
+    },
+    {
+      "id": "rn45",
+      "name": "复杂背景干扰",
+      "canonical_name": "复杂背景干扰",
+      "aliases": [],
+      "type": "问题",
+      "description": "背景复杂导致模型性能下降的问题",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "结合类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题进行结果复盘"
+    },
+    {
+      "id": "rn46",
+      "name": "过拟合",
+      "canonical_name": "过拟合",
+      "aliases": [],
+      "type": "问题",
+      "description": "模型在训练数据上表现好但在新数据上表现差的问题",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "结合类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题进行结果复盘"
+    },
+    {
+      "id": "rn47",
+      "name": "欠拟合",
+      "canonical_name": "欠拟合",
+      "aliases": [],
+      "type": "问题",
+      "description": "模型未能充分学习数据特征的问题",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "结合类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题进行结果复盘"
+    },
+    {
+      "id": "rn48",
+      "name": "UNSW School of Computer Science and Engineering",
+      "canonical_name": "UNSW School of Computer Science and Engineering",
+      "aliases": [],
+      "type": "组织",
+      "description": "新南威尔士大学计算机科学与工程学院",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "UNSW School of Computer Science and Engineering"
+    },
+    {
+      "id": "rn49",
+      "name": "COMP1511 Tutor",
+      "canonical_name": "COMP1511 Tutor",
+      "aliases": [],
+      "type": "角色",
+      "description": "C语言入门课程Tutor",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "担任C 语言入门课程Tutor"
+    },
+    {
+      "id": "rn50",
+      "name": "C语言入门课程",
+      "canonical_name": "C语言入门课程",
+      "aliases": [],
+      "type": "主题",
+      "description": "COMP1511课程，教授C语言程序设计基础",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": "担任C 语言入门课程Tutor"
+    }
+  ],
+  "edges": [
+    {
+      "id": "me1",
+      "source": "rn1",
+      "target": "rn2",
+      "relation": "相关",
+      "description": "朱文潇求职意向为软件工程师实习生",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me2",
+      "source": "rn1",
+      "target": "rn3",
+      "relation": "相关",
+      "description": "朱文潇求职意向为系统软件开发实习生",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me3",
+      "source": "rn1",
+      "target": "rn4",
+      "relation": "相关",
+      "description": "朱文潇求职意向为AI芯片软件实习生",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me4",
+      "source": "rn1",
+      "target": "rn5",
+      "relation": "相关",
+      "description": "朱文潇期望工作城市为上海",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me5",
+      "source": "rn1",
+      "target": "rn6",
+      "relation": "属于",
+      "description": "朱文潇的专业是计算机科学",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me6",
+      "source": "rn1",
+      "target": "rn7",
+      "relation": "使用",
+      "description": "朱文潇具备C语言编程基础",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me7",
+      "source": "rn1",
+      "target": "rn8",
+      "relation": "使用",
+      "description": "朱文潇具备Python编程基础",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me8",
+      "source": "rn1",
+      "target": "rn9",
+      "relation": "使用",
+      "description": "朱文潇具备Java编程基础",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me9",
+      "source": "rn1",
+      "target": "rn10",
+      "relation": "使用",
+      "description": "朱文潇具备Shell编程基础",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me10",
+      "source": "rn1",
+      "target": "rn11",
+      "relation": "使用",
+      "description": "朱文潇熟悉Linux环境",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me11",
+      "source": "rn1",
+      "target": "rn12",
+      "relation": "使用",
+      "description": "朱文潇使用Git版本控制",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me12",
+      "source": "rn1",
+      "target": "rn13",
+      "relation": "使用",
+      "description": "朱文潇具备Socket网络编程能力",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me13",
+      "source": "rn1",
+      "target": "rn14",
+      "relation": "相关",
+      "description": "朱文潇完成了MIPS指令集仿真器项目",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me14",
+      "source": "rn1",
+      "target": "rn15",
+      "relation": "相关",
+      "description": "朱文潇完成了基于UDP的可靠传输协议项目",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me15",
+      "source": "rn1",
+      "target": "rn16",
+      "relation": "相关",
+      "description": "朱文潇参与了农业场景AI害虫识别与检测项目",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me16",
+      "source": "rn14",
+      "target": "rn7",
+      "relation": "使用",
+      "description": "MIPS指令集仿真器使用C语言实现",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me17",
+      "source": "rn15",
+      "target": "rn8",
+      "relation": "使用",
+      "description": "基于UDP的可靠传输协议使用Python实现",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me18",
+      "source": "rn16",
+      "target": "rn17",
+      "relation": "使用",
+      "description": "农业场景AI害虫识别与检测项目使用PyTorch",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me19",
+      "source": "rn16",
+      "target": "rn22",
+      "relation": "使用",
+      "description": "项目使用AgroPest-12数据集",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me20",
+      "source": "rn16",
+      "target": "rn20",
+      "relation": "使用",
+      "description": "项目测试了YOLOv11模型",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me21",
+      "source": "rn16",
+      "target": "rn21",
+      "relation": "使用",
+      "description": "项目测试了Faster R-CNN模型",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me22",
+      "source": "rn16",
+      "target": "rn23",
+      "relation": "使用",
+      "description": "项目使用mAP指标进行评估",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me23",
+      "source": "rn16",
+      "target": "rn24",
+      "relation": "使用",
+      "description": "项目使用Precision指标进行评估",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me24",
+      "source": "rn16",
+      "target": "rn25",
+      "relation": "使用",
+      "description": "项目使用Recall指标进行评估",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me25",
+      "source": "rn16",
+      "target": "rn26",
+      "relation": "使用",
+      "description": "项目使用F1指标进行评估",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me26",
+      "source": "rn16",
+      "target": "rn27",
+      "relation": "使用",
+      "description": "项目使用Accuracy指标进行评估",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me27",
+      "source": "rn16",
+      "target": "rn28",
+      "relation": "使用",
+      "description": "项目使用AUC指标进行评估",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "me28",
+      "source": "rn30",
+      "target": "rn23",
+      "relation": "使用",
+      "description": "计算机视觉方法使用mAP等指标评估",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me29",
+      "source": "rn30",
+      "target": "rn24",
+      "relation": "使用",
+      "description": "计算机视觉方法使用Precision等指标评估",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me30",
+      "source": "rn30",
+      "target": "rn25",
+      "relation": "使用",
+      "description": "计算机视觉方法使用Recall等指标评估",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me31",
+      "source": "rn30",
+      "target": "rn26",
+      "relation": "使用",
+      "description": "计算机视觉方法使用F1等指标评估",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me32",
+      "source": "rn30",
+      "target": "rn27",
+      "relation": "使用",
+      "description": "计算机视觉方法使用Accuracy等指标评估",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me33",
+      "source": "rn30",
+      "target": "rn28",
+      "relation": "使用",
+      "description": "计算机视觉方法使用AUC等指标评估",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me34",
+      "source": "rn42",
+      "target": "rn37",
+      "relation": "包含",
+      "description": "多模型对比实验与方案评估流程包含YOLOv11",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me35",
+      "source": "rn42",
+      "target": "rn38",
+      "relation": "包含",
+      "description": "多模型对比实验与方案评估流程包含Faster R-CNN",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me36",
+      "source": "rn42",
+      "target": "rn39",
+      "relation": "包含",
+      "description": "多模型对比实验与方案评估流程包含EfficientNet-B0",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me37",
+      "source": "rn42",
+      "target": "rn40",
+      "relation": "包含",
+      "description": "多模型对比实验与方案评估流程包含SVM + BoW",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me38",
+      "source": "rn42",
+      "target": "rn41",
+      "relation": "包含",
+      "description": "多模型对比实验与方案评估流程包含EnsembleWeighted Fusion",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me39",
+      "source": "rn42",
+      "target": "rn43",
+      "relation": "包含",
+      "description": "多模型对比实验与方案评估流程包含类别误判问题分析",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me40",
+      "source": "rn42",
+      "target": "rn44",
+      "relation": "包含",
+      "description": "多模型对比实验与方案评估流程包含检测框偏差问题分析",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me41",
+      "source": "rn42",
+      "target": "rn45",
+      "relation": "包含",
+      "description": "多模型对比实验与方案评估流程包含复杂背景干扰问题分析",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me42",
+      "source": "rn42",
+      "target": "rn46",
+      "relation": "包含",
+      "description": "多模型对比实验与方案评估流程包含过拟合问题分析",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me43",
+      "source": "rn42",
+      "target": "rn47",
+      "relation": "包含",
+      "description": "多模型对比实验与方案评估流程包含欠拟合问题分析",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me44",
+      "source": "rn49",
+      "target": "rn50",
+      "relation": "属于",
+      "description": "COMP1511 Tutor属于C语言入门课程",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    },
+    {
+      "id": "me45",
+      "source": "rn49",
+      "target": "rn48",
+      "relation": "属于",
+      "description": "COMP1511 Tutor属于UNSW School of Computer Science and Engineering",
+      "source_chunk_id": "fixed_0001",
+      "source_part_id": "fixed_0001__part_002",
+      "evidence": ""
+    }
+  ],
+  "part_results": [
+    {
+      "chunk_id": "fixed_0001",
+      "part_id": "fixed_0001__part_001",
+      "title": "fixed_chunk_0001",
+      "parent_title": null,
+      "extraction_mode": "auto",
+      "nodes": [
+        {
+          "id": "rn1",
+          "name": "朱文潇",
+          "canonical_name": "朱文潇",
+          "aliases": [],
+          "type": "人物",
+          "description": "求职者，24岁，籍贯开封，非党员，求职软件工程师实习生等岗位",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "朱文潇男｜24 岁｜籍贯：开封｜非党员"
+        },
+        {
+          "id": "rn2",
+          "name": "软件工程师实习生",
+          "canonical_name": "软件工程师实习生",
+          "aliases": [],
+          "type": "概念",
+          "description": "求职意向岗位之一",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "求职意向：软件工程师实习生/ 系统软件开发实习生/ AI 芯片软件实习生"
+        },
+        {
+          "id": "rn3",
+          "name": "系统软件开发实习生",
+          "canonical_name": "系统软件开发实习生",
+          "aliases": [],
+          "type": "概念",
+          "description": "求职意向岗位之一",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "求职意向：软件工程师实习生/ 系统软件开发实习生/ AI 芯片软件实习生"
+        },
+        {
+          "id": "rn4",
+          "name": "AI芯片软件实习生",
+          "canonical_name": "AI芯片软件实习生",
+          "aliases": [],
+          "type": "概念",
+          "description": "求职意向岗位之一",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "求职意向：软件工程师实习生/ 系统软件开发实习生/ AI 芯片软件实习生"
+        },
+        {
+          "id": "rn5",
+          "name": "上海",
+          "canonical_name": "上海",
+          "aliases": [],
+          "type": "地点",
+          "description": "期望工作城市",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "期望城市：上海"
+        },
+        {
+          "id": "rn6",
+          "name": "计算机科学专业",
+          "canonical_name": "计算机科学专业",
+          "aliases": [],
+          "type": "概念",
+          "description": "朱文潇的专业背景",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "计算机科学专业背景"
+        },
+        {
+          "id": "rn7",
+          "name": "C语言",
+          "canonical_name": "C语言",
+          "aliases": [
+            "C"
+          ],
+          "type": "工具",
+          "description": "编程语言，用于系统软件和底层开发",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "具备C、Python、Java、Shell 等编程基础"
+        },
+        {
+          "id": "rn8",
+          "name": "Python",
+          "canonical_name": "Python",
+          "aliases": [],
+          "type": "工具",
+          "description": "编程语言",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "具备C、Python、Java、Shell 等编程基础"
+        },
+        {
+          "id": "rn9",
+          "name": "Java",
+          "canonical_name": "Java",
+          "aliases": [],
+          "type": "工具",
+          "description": "编程语言",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "具备C、Python、Java、Shell 等编程基础"
+        },
+        {
+          "id": "rn10",
+          "name": "Shell",
+          "canonical_name": "Shell",
+          "aliases": [],
+          "type": "工具",
+          "description": "脚本语言",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "具备C、Python、Java、Shell 等编程基础"
+        },
+        {
+          "id": "rn11",
+          "name": "Linux",
+          "canonical_name": "Linux",
+          "aliases": [],
+          "type": "工具",
+          "description": "操作系统环境",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "熟悉Linux 环境"
+        },
+        {
+          "id": "rn12",
+          "name": "Git",
+          "canonical_name": "Git",
+          "aliases": [],
+          "type": "工具",
+          "description": "版本控制工具",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "Git 版本控制"
+        },
+        {
+          "id": "rn13",
+          "name": "Socket网络编程",
+          "canonical_name": "Socket网络编程",
+          "aliases": [],
+          "type": "概念",
+          "description": "网络编程技术",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "Socket 网络编程"
+        },
+        {
+          "id": "rn14",
+          "name": "MIPS指令集仿真器",
+          "canonical_name": "MIPS指令集仿真器",
+          "aliases": [
+            "轻量级MIPS 指令集仿真器"
+          ],
+          "type": "项目",
+          "description": "基于C语言实现的简化MIPS指令集仿真器项目",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "轻量级MIPS 指令集仿真器"
+        },
+        {
+          "id": "rn15",
+          "name": "基于UDP的可靠传输协议",
+          "canonical_name": "基于UDP的可靠传输协议",
+          "aliases": [
+            "URP"
+          ],
+          "type": "项目",
+          "description": "基于UDP Socket编程实现的可靠文件传输协议项目",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "基于UDP 的可靠传输协议（URP）"
+        },
+        {
+          "id": "rn16",
+          "name": "农业场景AI害虫识别与检测项目",
+          "canonical_name": "农业场景AI害虫识别与检测项目",
+          "aliases": [],
+          "type": "项目",
+          "description": "参与农业害虫图像检测与分类项目",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "农业场景AI 害虫识别与检测项目"
+        },
+        {
+          "id": "rn17",
+          "name": "PyTorch",
+          "canonical_name": "PyTorch",
+          "aliases": [],
+          "type": "工具",
+          "description": "深度学习框架",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "PyTorch、NumPy、CNN 模型训练"
+        },
+        {
+          "id": "rn18",
+          "name": "NumPy",
+          "canonical_name": "NumPy",
+          "aliases": [],
+          "type": "工具",
+          "description": "数值计算库",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "PyTorch、NumPy、CNN 模型训练"
+        },
+        {
+          "id": "rn19",
+          "name": "CNN",
+          "canonical_name": "CNN",
+          "aliases": [],
+          "type": "概念",
+          "description": "卷积神经网络模型",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "熟悉CNN、YOLO、Faster R-CNN 等模型评估流程"
+        },
+        {
+          "id": "rn20",
+          "name": "YOLO",
+          "canonical_name": "YOLO",
+          "aliases": [
+            "YOLOv11"
+          ],
+          "type": "概念",
+          "description": "目标检测模型",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "团队测试YOLOv11、Faster R-CNN"
+        },
+        {
+          "id": "rn21",
+          "name": "Faster R-CNN",
+          "canonical_name": "Faster R-CNN",
+          "aliases": [],
+          "type": "概念",
+          "description": "目标检测模型",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "团队测试YOLOv11、Faster R-CNN"
+        },
+        {
+          "id": "rn22",
+          "name": "AgroPest-12数据集",
+          "canonical_name": "AgroPest-12数据集",
+          "aliases": [],
+          "type": "对象",
+          "description": "农业害虫图像数据集",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "项目基于AgroPest-12 数据集"
+        },
+        {
+          "id": "rn23",
+          "name": "mAP",
+          "canonical_name": "mAP",
+          "aliases": [],
+          "type": "指标",
+          "description": "平均精度均值，模型评估指标",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+        },
+        {
+          "id": "rn24",
+          "name": "Precision",
+          "canonical_name": "Precision",
+          "aliases": [
+            "精度"
+          ],
+          "type": "指标",
+          "description": "精确率，模型评估指标",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+        },
+        {
+          "id": "rn25",
+          "name": "Recall",
+          "canonical_name": "Recall",
+          "aliases": [
+            "召回率"
+          ],
+          "type": "指标",
+          "description": "召回率，模型评估指标",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+        },
+        {
+          "id": "rn26",
+          "name": "F1",
+          "canonical_name": "F1",
+          "aliases": [
+            "F1分数"
+          ],
+          "type": "指标",
+          "description": "F1分数，模型评估指标",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+        },
+        {
+          "id": "rn27",
+          "name": "Accuracy",
+          "canonical_name": "Accuracy",
+          "aliases": [
+            "准确率"
+          ],
+          "type": "指标",
+          "description": "准确率，模型评估指标",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+        },
+        {
+          "id": "rn28",
+          "name": "AUC",
+          "canonical_name": "AUC",
+          "aliases": [],
+          "type": "指标",
+          "description": "AUC值，模型评估指标",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+        },
+        {
+          "id": "rn29",
+          "name": "LaTeX",
+          "canonical_name": "LaTeX",
+          "aliases": [],
+          "type": "工具",
+          "description": "文档排版系统",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": "LaTeX、英文技术文档阅读、技术报告撰写"
+        }
+      ],
+      "edges": [
+        {
+          "id": "re1",
+          "source": "rn1",
+          "target": "rn2",
+          "relation": "相关",
+          "description": "朱文潇求职意向为软件工程师实习生",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re2",
+          "source": "rn1",
+          "target": "rn3",
+          "relation": "相关",
+          "description": "朱文潇求职意向为系统软件开发实习生",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re3",
+          "source": "rn1",
+          "target": "rn4",
+          "relation": "相关",
+          "description": "朱文潇求职意向为AI芯片软件实习生",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re4",
+          "source": "rn1",
+          "target": "rn5",
+          "relation": "相关",
+          "description": "朱文潇期望工作城市为上海",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re5",
+          "source": "rn1",
+          "target": "rn6",
+          "relation": "属于",
+          "description": "朱文潇的专业是计算机科学",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re6",
+          "source": "rn1",
+          "target": "rn7",
+          "relation": "使用",
+          "description": "朱文潇具备C语言编程基础",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re7",
+          "source": "rn1",
+          "target": "rn8",
+          "relation": "使用",
+          "description": "朱文潇具备Python编程基础",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re8",
+          "source": "rn1",
+          "target": "rn9",
+          "relation": "使用",
+          "description": "朱文潇具备Java编程基础",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re9",
+          "source": "rn1",
+          "target": "rn10",
+          "relation": "使用",
+          "description": "朱文潇具备Shell编程基础",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re10",
+          "source": "rn1",
+          "target": "rn11",
+          "relation": "使用",
+          "description": "朱文潇熟悉Linux环境",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re11",
+          "source": "rn1",
+          "target": "rn12",
+          "relation": "使用",
+          "description": "朱文潇使用Git版本控制",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re12",
+          "source": "rn1",
+          "target": "rn13",
+          "relation": "使用",
+          "description": "朱文潇具备Socket网络编程能力",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re13",
+          "source": "rn1",
+          "target": "rn14",
+          "relation": "相关",
+          "description": "朱文潇完成了MIPS指令集仿真器项目",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re14",
+          "source": "rn1",
+          "target": "rn15",
+          "relation": "相关",
+          "description": "朱文潇完成了基于UDP的可靠传输协议项目",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re15",
+          "source": "rn1",
+          "target": "rn16",
+          "relation": "相关",
+          "description": "朱文潇参与了农业场景AI害虫识别与检测项目",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re16",
+          "source": "rn14",
+          "target": "rn7",
+          "relation": "使用",
+          "description": "MIPS指令集仿真器使用C语言实现",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re17",
+          "source": "rn15",
+          "target": "rn8",
+          "relation": "使用",
+          "description": "基于UDP的可靠传输协议使用Python实现",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re18",
+          "source": "rn16",
+          "target": "rn17",
+          "relation": "使用",
+          "description": "农业场景AI害虫识别与检测项目使用PyTorch",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re19",
+          "source": "rn16",
+          "target": "rn22",
+          "relation": "使用",
+          "description": "项目使用AgroPest-12数据集",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re20",
+          "source": "rn16",
+          "target": "rn20",
+          "relation": "使用",
+          "description": "项目测试了YOLOv11模型",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re21",
+          "source": "rn16",
+          "target": "rn21",
+          "relation": "使用",
+          "description": "项目测试了Faster R-CNN模型",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re22",
+          "source": "rn16",
+          "target": "rn23",
+          "relation": "使用",
+          "description": "项目使用mAP指标进行评估",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re23",
+          "source": "rn16",
+          "target": "rn24",
+          "relation": "使用",
+          "description": "项目使用Precision指标进行评估",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re24",
+          "source": "rn16",
+          "target": "rn25",
+          "relation": "使用",
+          "description": "项目使用Recall指标进行评估",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re25",
+          "source": "rn16",
+          "target": "rn26",
+          "relation": "使用",
+          "description": "项目使用F1指标进行评估",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re26",
+          "source": "rn16",
+          "target": "rn27",
+          "relation": "使用",
+          "description": "项目使用Accuracy指标进行评估",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        },
+        {
+          "id": "re27",
+          "source": "rn16",
+          "target": "rn28",
+          "relation": "使用",
+          "description": "项目使用AUC指标进行评估",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_001",
+          "evidence": ""
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "chunk_id": "fixed_0001",
+      "part_id": "fixed_0001__part_002",
+      "title": "fixed_chunk_0001",
+      "parent_title": null,
+      "extraction_mode": "auto",
+      "nodes": [
+        {
+          "id": "rn30",
+          "name": "计算机视觉方法",
+          "canonical_name": "计算机视觉方法",
+          "aliases": [],
+          "type": "概念",
+          "description": "需要进行开发、测试和对比的计算机视觉方法",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "需要对不同计算机视觉方法进行开发、测试和对比"
+        },
+        {
+          "id": "rn31",
+          "name": "mAP",
+          "canonical_name": "mAP",
+          "aliases": [],
+          "type": "指标",
+          "description": "平均精度均值，用于评估模型性能",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+        },
+        {
+          "id": "rn32",
+          "name": "Precision",
+          "canonical_name": "Precision",
+          "aliases": [],
+          "type": "指标",
+          "description": "精确率，评估模型预测正例的准确性",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+        },
+        {
+          "id": "rn33",
+          "name": "Recall",
+          "canonical_name": "Recall",
+          "aliases": [],
+          "type": "指标",
+          "description": "召回率，评估模型识别正例的能力",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+        },
+        {
+          "id": "rn34",
+          "name": "F1",
+          "canonical_name": "F1",
+          "aliases": [],
+          "type": "指标",
+          "description": "F1分数，精确率和召回率的调和平均",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+        },
+        {
+          "id": "rn35",
+          "name": "Accuracy",
+          "canonical_name": "Accuracy",
+          "aliases": [],
+          "type": "指标",
+          "description": "准确率，评估模型整体预测正确比例",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+        },
+        {
+          "id": "rn36",
+          "name": "AUC",
+          "canonical_name": "AUC",
+          "aliases": [],
+          "type": "指标",
+          "description": "ROC曲线下面积，评估模型分类性能",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+        },
+        {
+          "id": "rn37",
+          "name": "YOLOv11",
+          "canonical_name": "YOLOv11",
+          "aliases": [],
+          "type": "工具",
+          "description": "目标检测模型",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+        },
+        {
+          "id": "rn38",
+          "name": "Faster R-CNN",
+          "canonical_name": "Faster R-CNN",
+          "aliases": [],
+          "type": "工具",
+          "description": "目标检测模型",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+        },
+        {
+          "id": "rn39",
+          "name": "EfficientNet-B0",
+          "canonical_name": "EfficientNet-B0",
+          "aliases": [],
+          "type": "工具",
+          "description": "深度学习分类模型",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+        },
+        {
+          "id": "rn40",
+          "name": "SVM + BoW",
+          "canonical_name": "SVM + BoW",
+          "aliases": [],
+          "type": "工具",
+          "description": "传统机器学习方法，支持向量机结合词袋模型",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+        },
+        {
+          "id": "rn41",
+          "name": "EnsembleWeighted Fusion",
+          "canonical_name": "EnsembleWeighted Fusion",
+          "aliases": [],
+          "type": "工具",
+          "description": "集成加权融合方案",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+        },
+        {
+          "id": "rn42",
+          "name": "多模型对比实验与方案评估流程",
+          "canonical_name": "多模型对比实验与方案评估流程",
+          "aliases": [],
+          "type": "方法",
+          "description": "完成的多模型对比实验与方案评估流程",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "完成多模型对比实验与方案评估流程"
+        },
+        {
+          "id": "rn43",
+          "name": "类别误判",
+          "canonical_name": "类别误判",
+          "aliases": [],
+          "type": "问题",
+          "description": "模型分类错误的问题",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "结合类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题进行结果复盘"
+        },
+        {
+          "id": "rn44",
+          "name": "检测框偏差",
+          "canonical_name": "检测框偏差",
+          "aliases": [],
+          "type": "问题",
+          "description": "目标检测中边界框定位不准确的问题",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "结合类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题进行结果复盘"
+        },
+        {
+          "id": "rn45",
+          "name": "复杂背景干扰",
+          "canonical_name": "复杂背景干扰",
+          "aliases": [],
+          "type": "问题",
+          "description": "背景复杂导致模型性能下降的问题",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "结合类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题进行结果复盘"
+        },
+        {
+          "id": "rn46",
+          "name": "过拟合",
+          "canonical_name": "过拟合",
+          "aliases": [],
+          "type": "问题",
+          "description": "模型在训练数据上表现好但在新数据上表现差的问题",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "结合类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题进行结果复盘"
+        },
+        {
+          "id": "rn47",
+          "name": "欠拟合",
+          "canonical_name": "欠拟合",
+          "aliases": [],
+          "type": "问题",
+          "description": "模型未能充分学习数据特征的问题",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "结合类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题进行结果复盘"
+        },
+        {
+          "id": "rn48",
+          "name": "UNSW School of Computer Science and Engineering",
+          "canonical_name": "UNSW School of Computer Science and Engineering",
+          "aliases": [],
+          "type": "组织",
+          "description": "新南威尔士大学计算机科学与工程学院",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "UNSW School of Computer Science and Engineering"
+        },
+        {
+          "id": "rn49",
+          "name": "COMP1511 Tutor",
+          "canonical_name": "COMP1511 Tutor",
+          "aliases": [],
+          "type": "角色",
+          "description": "C语言入门课程Tutor",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "担任C 语言入门课程Tutor"
+        },
+        {
+          "id": "rn50",
+          "name": "C语言入门课程",
+          "canonical_name": "C语言入门课程",
+          "aliases": [],
+          "type": "主题",
+          "description": "COMP1511课程，教授C语言程序设计基础",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": "担任C 语言入门课程Tutor"
+        }
+      ],
+      "edges": [
+        {
+          "id": "re28",
+          "source": "rn30",
+          "target": "rn31",
+          "relation": "使用",
+          "description": "计算机视觉方法使用mAP等指标评估",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re29",
+          "source": "rn30",
+          "target": "rn32",
+          "relation": "使用",
+          "description": "计算机视觉方法使用Precision等指标评估",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re30",
+          "source": "rn30",
+          "target": "rn33",
+          "relation": "使用",
+          "description": "计算机视觉方法使用Recall等指标评估",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re31",
+          "source": "rn30",
+          "target": "rn34",
+          "relation": "使用",
+          "description": "计算机视觉方法使用F1等指标评估",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re32",
+          "source": "rn30",
+          "target": "rn35",
+          "relation": "使用",
+          "description": "计算机视觉方法使用Accuracy等指标评估",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re33",
+          "source": "rn30",
+          "target": "rn36",
+          "relation": "使用",
+          "description": "计算机视觉方法使用AUC等指标评估",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re34",
+          "source": "rn42",
+          "target": "rn37",
+          "relation": "包含",
+          "description": "多模型对比实验与方案评估流程包含YOLOv11",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re35",
+          "source": "rn42",
+          "target": "rn38",
+          "relation": "包含",
+          "description": "多模型对比实验与方案评估流程包含Faster R-CNN",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re36",
+          "source": "rn42",
+          "target": "rn39",
+          "relation": "包含",
+          "description": "多模型对比实验与方案评估流程包含EfficientNet-B0",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re37",
+          "source": "rn42",
+          "target": "rn40",
+          "relation": "包含",
+          "description": "多模型对比实验与方案评估流程包含SVM + BoW",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re38",
+          "source": "rn42",
+          "target": "rn41",
+          "relation": "包含",
+          "description": "多模型对比实验与方案评估流程包含EnsembleWeighted Fusion",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re39",
+          "source": "rn42",
+          "target": "rn43",
+          "relation": "包含",
+          "description": "多模型对比实验与方案评估流程包含类别误判问题分析",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re40",
+          "source": "rn42",
+          "target": "rn44",
+          "relation": "包含",
+          "description": "多模型对比实验与方案评估流程包含检测框偏差问题分析",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re41",
+          "source": "rn42",
+          "target": "rn45",
+          "relation": "包含",
+          "description": "多模型对比实验与方案评估流程包含复杂背景干扰问题分析",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re42",
+          "source": "rn42",
+          "target": "rn46",
+          "relation": "包含",
+          "description": "多模型对比实验与方案评估流程包含过拟合问题分析",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re43",
+          "source": "rn42",
+          "target": "rn47",
+          "relation": "包含",
+          "description": "多模型对比实验与方案评估流程包含欠拟合问题分析",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re44",
+          "source": "rn49",
+          "target": "rn50",
+          "relation": "属于",
+          "description": "COMP1511 Tutor属于C语言入门课程",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        },
+        {
+          "id": "re45",
+          "source": "rn49",
+          "target": "rn48",
+          "relation": "属于",
+          "description": "COMP1511 Tutor属于UNSW School of Computer Science and Engineering",
+          "source_chunk_id": "fixed_0001",
+          "source_part_id": "fixed_0001__part_002",
+          "evidence": ""
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "skipped_chunks": [],
+  "next_stage": "final_graph",
+  "cleaning": {
+    "source_raw_graph_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/raw_graphs/55c030d365b14d9596e42beaaaee9174_raw_graph.json",
+    "stats": {
+      "rule": "same_key_exact_value_dedupe",
+      "removed_duplicate_values": 0,
+      "deduped_keys": []
+    },
+    "next_stage": "graph_merge"
+  },
+  "semantic_merge": {
+    "source_cleaned_graph_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/cleaned_graphs/55c030d365b14d9596e42beaaaee9174_cleaned_graph.json",
+    "merge_groups": [
+      {
+        "canonical_name": "mAP",
+        "node_ids": [
+          "rn23",
+          "rn31"
+        ],
+        "reason": "相同指标名称和描述，均为平均精度均值"
+      },
+      {
+        "canonical_name": "Precision",
+        "node_ids": [
+          "rn24",
+          "rn32"
+        ],
+        "reason": "相同指标名称和描述，均为精确率"
+      },
+      {
+        "canonical_name": "Recall",
+        "node_ids": [
+          "rn25",
+          "rn33"
+        ],
+        "reason": "相同指标名称和描述，均为召回率"
+      },
+      {
+        "canonical_name": "F1",
+        "node_ids": [
+          "rn26",
+          "rn34"
+        ],
+        "reason": "相同指标名称和描述，均为F1分数"
+      },
+      {
+        "canonical_name": "Accuracy",
+        "node_ids": [
+          "rn27",
+          "rn35"
+        ],
+        "reason": "相同指标名称和描述，均为准确率"
+      },
+      {
+        "canonical_name": "AUC",
+        "node_ids": [
+          "rn28",
+          "rn36"
+        ],
+        "reason": "相同指标名称和描述，均为AUC值"
+      }
+    ],
+    "warnings": [],
+    "merged_node_count": 6,
+    "removed_edge_count": 0,
+    "next_stage": "final_graph"
+  }
+}

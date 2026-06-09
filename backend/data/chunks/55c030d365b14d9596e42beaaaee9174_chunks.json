@@ -1,0 +1,84 @@
+{
+  "extraction_id": "55c030d365b14d9596e42beaaaee9174",
+  "source_file": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/extracted_text/55c030d365b14d9596e42beaaaee9174.txt",
+  "strategy_file": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/strategy/55c030d365b14d9596e42beaaaee9174_split_strategy.json",
+  "executable_split_config": {
+    "split_mode": "heading_regex",
+    "primary_unit_name": "章节",
+    "secondary_unit_name": null,
+    "primary_start_patterns": [
+      "^(?:个人优势|专业技能|项目经历|教育经历|资格证书|经历补充)\\s*$"
+    ],
+    "secondary_start_patterns": [],
+    "parent_context_patterns": [],
+    "end_boundary_rule": "next_same_level_start",
+    "keep_parent_context": false,
+    "metadata_fields": [
+      "chunk_id",
+      "title",
+      "start_char",
+      "end_char",
+      "content"
+    ],
+    "fallback": {
+      "enabled": true,
+      "method": "generic_heading_then_fixed_length",
+      "max_chars": 3000,
+      "overlap": 300
+    }
+  },
+  "split_report": {
+    "chunk_count": 1,
+    "split_types": {
+      "fixed_length": 1
+    },
+    "avg_chars": 2717,
+    "max_chars": 2717,
+    "min_chars": 2717,
+    "first_5_chunks": [
+      {
+        "chunk_id": "fixed_0001",
+        "title": "fixed_chunk_0001",
+        "parent_title": null,
+        "chars": 2717
+      }
+    ]
+  },
+  "quality_report": {
+    "summary": {
+      "total_chunks": 1,
+      "problem_chunks": 0,
+      "problem_ratio": 0.0,
+      "average_score": 100.0
+    },
+    "level_count": {
+      "excellent": 1
+    },
+    "issue_count": {},
+    "suggestion_count": {
+      "keep": 1
+    },
+    "problem_preview_first_20": []
+  },
+  "chunks": [
+    {
+      "chunk_id": "fixed_0001",
+      "split_type": "fixed_length",
+      "title": "fixed_chunk_0001",
+      "parent_title": null,
+      "start_char": 0,
+      "end_char": 2717,
+      "char_count": 2717,
+      "content": "朱文潇男｜24 岁｜籍贯：开封｜非党员｜17637868380 ｜zhuwenxiao2024@126.com求职意向：软件工程师实习生/ 系统软件开发实习生/ AI 芯片软件实习生｜期望城市：上海｜期望薪资：3-4K可实习时间：尽快到岗，可实习4 个月以上｜毕业时间：2026 年12 月个人优势• 计算机科学专业背景，具备C、Python、Java、Shell 等编程基础，熟悉Linux 环境、Git 版本控制、Socket 网络编程和基础系统调试方法，能够阅读英文技术文档并快速理解工程实现逻辑。\n• 具备系统软件与底层执行机制相关项目经验，曾实现MIPS 指令集仿真器和基于UDP 的可靠传输协议，理解二进制文件解析、指令解码、寄存器状态维护、内存访问、网络传输可靠性和异常场景调试。\n• 具备AI 与计算机视觉项目实践经验，参与害虫识别与检测项目中的模型实验设计、训练评估和多模型对比，熟悉CNN、YOLO、Faster R-CNN 等模型评估流程，能够结合精度、召回率、推理成本和部署可行性进行技术方案分析。\n• 具备较强的问题拆解和学习能力，能够将复杂工程问题拆分为模块化任务，并通过日志、测试样例和调试信息定位问题，适配系统软件、AI 芯片仿真器、计算框架底层开发和网络协议相关岗位要求。\n专业技能• 编程语言：C、Python、Java、Shell；了解C++ 基础语法，具备继续深入学习C/C++ 系统开发的能力• 系统与底层：Linux、Git、二进制文件处理、位运算、指针、动态内存管理、UNIX 文件操作、基础系统调用• 计算机基础：数据结构与算法、计算机体系结构、MIPS 指令集基础、寄存器模型、内存访问、程序执行流程• 网络与协议：UDP Socket 编程、可靠传输协议、滑动窗口、ACK 确认、超时重传、快速重传、异常网络模拟• AI / 机器学习：PyTorch、NumPy、CNN 模型训练、目标检测、模型评估、Precision、Recall、F1、mAP、AUC 指标分析• 文档与协作：LaTeX、英文技术文档阅读、技术报告撰写、团队协作开发、实验记录与问题复盘项目经历轻量级MIPS 指令集仿真器\n2025.09-2025.12\nC / 系统软件/ 计算机体系结构• 基于C 语言实现简化MIPS 指令集仿真器，支持.imps 二进制程序解析、指令加载、入口地址定位、寄存器状态维护、数据段内存模拟和系统调用处理。\n• 构建32 个通用寄存器、程序计数器PC 与数据段内存模型，基于opcode/funct 对32 位机器指令进行解码，实现指令级fetch-decode-execute 执行流程。\n• 支持算术逻辑、条件跳转、load/store、syscall 等核心指令类型，实现add/addi/addu/addiu/mul/ori/lui/slt/beq/bne/lb/lh/lw/sb/sh/sw 等多类指令。\n• 针对内存访问实现地址范围校验、字节/半字/字对齐检查，并处理little-endian 字节序、符号扩展、零扩展和有符号加法溢出等底层语义细节。\n• 实现Trace 调试模式，输出源汇编指令及寄存器变化过程，提升指令执行过程的可观测性，便于定位解码、跳转、内存访问和状态更新问题。\n• 成果：完成简化指令集仿真器的核心执行链路，系统掌握C 语言位运算、二进制文件处理、指针与动态内存管理、底层错误处理和模块化设计方法，具备AI 芯片仿真器、系统软件和计算框架底层开发相关基础。\n基于UDP 的可靠传输协议（URP）\n2025.06-2025.09\nPython / 网络协议/ 系统调试• 基于UDP Socket 编程实现可靠文件传输协议，设计Sender 和Receiver 两端程序，完成文件分片、数据传输、确认回复和文件重组流程。\n• 实现序列号、累计确认ACK、滑动窗口和流水线传输机制，提高不可靠网络环境下的数据传输效率。\n• 设计超时重传和快速重传机制，处理数据包丢失、损坏、乱序和延迟等异常情况，模拟TCP 可靠传输中的关键机制。\n• 构建不可靠网络模拟模块，模拟丢包、损坏、延迟等网络异常场景，用于验证协议在不同网络条件下的稳定性和边界表现。\n• 使用日志输出和测试样例定位传输过程中的边界问题，包括窗口移动、ACK 处理、重传触发和文件重组逻辑。\n• 成果：完成基于UDP 的可靠传输协议开发，支持文件分片传输、ACK 确认、滑动窗口、超时重传和快速重传等功能，加深了对TCP/IP 协议原理、网络系统稳定性验证和复杂问题排查的理解。\n农业场景AI 害虫识别与检测项目\n2026.01-2026.05\nPyTorch / 目标检测/ 模型评估• 参与农业害虫图像检测与分类项目，围绕农业场景下害虫自动识别需求，协助团队完成AI 视觉项目从任务拆解、模型实验设计、训练评估到方案选型的完整流程。\n• 项目基于AgroPest-12 数据集，任务包括害虫目标检测与图像分类，需要对不同计算机视觉方法进行开发、测试和对比，并通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估。\n• 参与多模型对比方案设计，团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法，覆盖传统机器学习、深度学习分类模型、目标检测模型和集成融合方案。\n• 协助拆解实验流程，明确不同模型的输入输出、评估指标和对比维度，跟踪模型准确率、检测效果、训练稳定性、推理成本和复杂场景下的表现差异。\n• 结合类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题进行结果复盘，分析模型失败原因和后续优化方向。\n• 成果：完成多模型对比实验与方案评估流程，基于精度、召回率、mAP、训练时间和推理成本等指标辅助筛选表现较优方案，提升了AI 模型实验管理、指标分析和技术方案评估能力。\n教育经历新南威尔士大学2023-2026.12本科｜计算机科学与技术｜预计2026 年12 月毕业资格证书• 雅思6.5 分经历补充UNSW School of Computer Science and Engineering\n2025.02-2025.05\nCOMP1511 Tutor• 担任C 语言入门课程Tutor，协助学生理解程序设计基础、指针、数组、调试方法和作业要求；通过代码讲解和问题反馈，提升技术表达、问题拆解和沟通协作能力。",
+      "quality": {
+        "score": 100,
+        "level": "excellent",
+        "issues": [],
+        "suggestion": "keep",
+        "char_count": 2717,
+        "content_density": 1.0
+      }
+    }
+  ],
+  "next_stage": "graph_extraction"
+}

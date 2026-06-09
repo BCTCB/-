@@ -1,0 +1,10 @@
+{
+  "extraction_id": "fe616bb6f8024e7a9f9b5b562cd44542",
+  "original_filename": " 朱文潇_AI项目经理.pdf",
+  "pdf_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/uploads/fe616bb6f8024e7a9f9b5b562cd44542.pdf",
+  "txt_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/extracted_text/fe616bb6f8024e7a9f9b5b562cd44542.txt",
+  "text_length": 2785,
+  "entity_types": [],
+  "relations": [],
+  "next_stage": "chunk_service"
+}

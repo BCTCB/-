@@ -1,0 +1,227 @@
+{
+  "success": true,
+  "extraction_id": "0bcc055f27524a7e9322990ec573e4d6",
+  "source_graph_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/relation_cleaned_graphs/0bcc055f27524a7e9322990ec573e4d6_relation_cleaned_graph.json",
+  "overview": {
+    "node_count": 61,
+    "edge_count": 57,
+    "entity_type_count": 11,
+    "relation_type_count": 7
+  },
+  "quality": {
+    "score": 99,
+    "level": "good",
+    "deductions": [
+      {
+        "reason": "孤立节点占比较高",
+        "count": 3,
+        "penalty": 1
+      }
+    ]
+  },
+  "distributions": {
+    "entity_type_count": {
+      "概念": 13,
+      "问题": 10,
+      "工具": 9,
+      "指标": 8,
+      "方法": 7,
+      "步骤": 4,
+      "主题": 3,
+      "对象": 3,
+      "任务": 2,
+      "组织": 1,
+      "角色": 1
+    },
+    "relation_type_count": {
+      "使用": 22,
+      "包含": 15,
+      "识别": 9,
+      "产生": 5,
+      "解释": 4,
+      "属于": 1,
+      "影响": 1
+    },
+    "node_source_chunk_count": 3,
+    "edge_source_chunk_count": 3
+  },
+  "structural_issues": {
+    "invalid_edge_count": 0,
+    "self_loop_edge_count": 0,
+    "duplicate_edge_count": 0,
+    "missing_relation_edge_count": 0,
+    "isolated_node_count": 3,
+    "connected_node_count": 58,
+    "invalid_edges_preview": [],
+    "self_loop_edges_preview": [],
+    "duplicate_edges_preview": [],
+    "missing_relation_edges_preview": [],
+    "isolated_node_ids_preview": [
+      "rn39",
+      "rn40",
+      "rn41"
+    ]
+  },
+  "content_issues": {
+    "missing_description_node_count": 0,
+    "missing_evidence_node_count": 0,
+    "vague_node_count": 26,
+    "vague_edge_count": 0,
+    "vague_nodes_preview": [
+      {
+        "id": "rn2",
+        "name": "AgroPest-12 数据集",
+        "type": "对象"
+      },
+      {
+        "id": "rn17",
+        "name": "类别误判",
+        "type": "问题"
+      },
+      {
+        "id": "rn18",
+        "name": "检测框偏差",
+        "type": "问题"
+      },
+      {
+        "id": "rn19",
+        "name": "复杂背景干扰",
+        "type": "问题"
+      },
+      {
+        "id": "rn20",
+        "name": "过拟合",
+        "type": "问题"
+      },
+      {
+        "id": "rn21",
+        "name": "欠拟合",
+        "type": "问题"
+      },
+      {
+        "id": "rn26",
+        "name": "Sender程序",
+        "type": "对象"
+      },
+      {
+        "id": "rn27",
+        "name": "Receiver程序",
+        "type": "对象"
+      },
+      {
+        "id": "rn32",
+        "name": "序列号",
+        "type": "概念"
+      },
+      {
+        "id": "rn33",
+        "name": "累计确认ACK",
+        "type": "概念"
+      },
+      {
+        "id": "rn34",
+        "name": "滑动窗口",
+        "type": "概念"
+      },
+      {
+        "id": "rn35",
+        "name": "流水线传输",
+        "type": "概念"
+      },
+      {
+        "id": "rn38",
+        "name": "数据包丢失",
+        "type": "问题"
+      },
+      {
+        "id": "rn39",
+        "name": "数据包损坏",
+        "type": "问题"
+      },
+      {
+        "id": "rn40",
+        "name": "数据包乱序",
+        "type": "问题"
+      },
+      {
+        "id": "rn41",
+        "name": "数据包延迟",
+        "type": "问题"
+      },
+      {
+        "id": "rn49",
+        "name": "C语言基础",
+        "type": "概念"
+      },
+      {
+        "id": "rn50",
+        "name": "程序设计逻辑",
+        "type": "概念"
+      },
+      {
+        "id": "rn52",
+        "name": "作业要求",
+        "type": "概念"
+      },
+      {
+        "id": "rn56",
+        "name": "学习难点",
+        "type": "问题"
+      },
+      {
+        "id": "rn57",
+        "name": "编程实践能力",
+        "type": "概念"
+      },
+      {
+        "id": "rn58",
+        "name": "沟通表达能力",
+        "type": "概念"
+      },
+      {
+        "id": "rn59",
+        "name": "需求理解能力",
+        "type": "概念"
+      },
+      {
+        "id": "rn60",
+        "name": "问题拆解能力",
+        "type": "概念"
+      },
+      {
+        "id": "rn61",
+        "name": "进度跟进能力",
+        "type": "概念"
+      },
+      {
+        "id": "rn62",
+        "name": "技术内容转化能力",
+        "type": "概念"
+      }
+    ],
+    "vague_edges_preview": [],
+    "duplicate_node_name_count": 0,
+    "duplicate_node_names_preview": []
+  },
+  "cleaning_summary": {
+    "exact_value_dedupe": {
+      "removed_duplicate_values": 0,
+      "deduped_key_count": 0
+    },
+    "semantic_node_merge": {
+      "merge_group_count": 1,
+      "merged_node_count": 1,
+      "warning_count": 0
+    },
+    "relation_cleaning": {
+      "relation_group_count": 1,
+      "renamed_relation_count": 1,
+      "removed_edge_count": 0,
+      "warning_count": 0
+    }
+  },
+  "recommendations": [
+    "人工复核孤立节点：重要概念可保留，泛化或噪声节点建议删除。"
+  ],
+  "next_stage": "final_graph_export"
+}

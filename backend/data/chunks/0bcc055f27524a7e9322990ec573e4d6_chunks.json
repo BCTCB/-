@@ -1,0 +1,137 @@
+{
+  "extraction_id": "0bcc055f27524a7e9322990ec573e4d6",
+  "source_file": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/extracted_text/0bcc055f27524a7e9322990ec573e4d6.txt",
+  "strategy_file": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/strategy/0bcc055f27524a7e9322990ec573e4d6_split_strategy.json",
+  "executable_split_config": {
+    "split_mode": "two_level_regex",
+    "primary_unit_name": "简历部分",
+    "secondary_unit_name": "项目",
+    "primary_start_patterns": [
+      "^(?:个人优势|专业技能|项目经历|教育经历|资格证书|社团经历)"
+    ],
+    "secondary_start_patterns": [
+      "^[\\u4e00-\\u9fa5a-zA-Z0-9\\s（）()]+\\d{4}\\.\\d{2}-\\d{4}\\.\\d{2}$"
+    ],
+    "parent_context_patterns": [
+      "^(?:个人优势|专业技能|项目经历|教育经历|资格证书|社团经历)"
+    ],
+    "end_boundary_rule": "next_primary_or_secondary_start",
+    "keep_parent_context": true,
+    "metadata_fields": [
+      "chunk_id",
+      "title",
+      "parent_title",
+      "start_char",
+      "end_char",
+      "content"
+    ],
+    "fallback": {
+      "enabled": true,
+      "method": "generic_heading_then_fixed_length",
+      "max_chars": 3000,
+      "overlap": 300
+    }
+  },
+  "split_report": {
+    "chunk_count": 3,
+    "split_types": {
+      "two_level_regex": 3
+    },
+    "avg_chars": 445,
+    "max_chars": 677,
+    "min_chars": 227,
+    "first_5_chunks": [
+      {
+        "chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+        "title": "农业场景AI 害虫识别与检测项目\n2026.01-2026.05",
+        "parent_title": "专业技能",
+        "chars": 677
+      },
+      {
+        "chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+        "title": "基于UDP 的可靠传输协议（URP）\n2025.06-2025.09",
+        "parent_title": "专业技能",
+        "chars": 433
+      },
+      {
+        "chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+        "title": "UNSW School of Computer Science and Engineering\n2025.02-2025.05",
+        "parent_title": "教育经历",
+        "chars": 227
+      }
+    ]
+  },
+  "quality_report": {
+    "summary": {
+      "total_chunks": 3,
+      "problem_chunks": 0,
+      "problem_ratio": 0.0,
+      "average_score": 100.0
+    },
+    "level_count": {
+      "excellent": 3
+    },
+    "issue_count": {},
+    "suggestion_count": {
+      "keep": 3
+    },
+    "problem_preview_first_20": []
+  },
+  "chunks": [
+    {
+      "chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "split_type": "two_level_regex",
+      "title": "农业场景AI 害虫识别与检测项目\n2026.01-2026.05",
+      "parent_title": "专业技能",
+      "start_char": 1224,
+      "end_char": 1902,
+      "char_count": 677,
+      "content": "农业场景AI 害虫识别与检测项目\n2026.01-2026.05\nAI 项目规划与实验管理• 参与农业害虫图像检测与分类项目，围绕农业场景下害虫自动识别需求，协助团队完成AI 视觉项目从任务拆解、模型实验设计、训练评估到方案选型的完整流程。\n• 项目基于AgroPest-12 数据集，任务包括害虫目标检测与图像分类，需要对不同计算机视觉方法进行开发、测试和对比，并通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估。\n• 参与多模型对比方案设计，团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法，覆盖传统机器学习、深度学习分类模型、目标检测模型和集成融合方案。\n• 协助拆解实验流程，明确不同模型的实验目标、输入输出、评估指标和对比维度，并建立实验结果记录方式，用于跟踪模型准确率、检测效果、训练稳定性、推理成本和复杂场景下的表现差异。\n• 通过横向比较不同模型在检测精度、分类效果、训练时间、泛化能力和部署可行性方面的表现，辅助团队完成最优模型方案选择；同时整理类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题，结合结果分析失败原因和后续优化方向。\n• 成果：完成多模型对比实验与方案评估流程，基于mAP、Precision、Recall、F1、Accuracy、AUC、训练时间和推理成本等指标筛选表现最优方案；提升了AI 项目推进、模型选型、实验管理、数据指标分析和技术方案评估能力。",
+      "quality": {
+        "score": 100,
+        "level": "excellent",
+        "issues": [],
+        "suggestion": "keep",
+        "char_count": 677,
+        "content_density": 1.0
+      }
+    },
+    {
+      "chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "split_type": "two_level_regex",
+      "title": "基于UDP 的可靠传输协议（URP）\n2025.06-2025.09",
+      "parent_title": "专业技能",
+      "start_char": 1902,
+      "end_char": 2335,
+      "char_count": 433,
+      "content": "基于UDP 的可靠传输协议（URP）\n2025.06-2025.09\n网络协议开发与系统调试• 基于UDP Socket 编程实现可靠文件传输协议，设计Sender 和Receiver 两端程序，完成文件分片、数据传输、确认回复和文件重组流程。\n• 实现序列号、累计确认ACK、滑动窗口和流水线传输机制，提高不可靠网络环境下的数据传输效率。\n• 设计超时重传和快速重传机制，处理数据包丢失、损坏、乱序和延迟等异常情况。\n• 构建不可靠网络模拟模块，模拟丢包、损坏和延迟场景，用于验证协议在不同网络条件下的稳定性。\n• 使用日志输出和测试样例定位传输过程中的边界问题，包括窗口移动、ACK 处理和重传触发逻辑。\n• 成果：完成基于UDP 的可靠传输协议开发，使用Python 实现Sender、Receiver 和网络异常模拟模块，支持文件分片传输、ACK 确认、滑动窗口、超时重传和快速重传等功能；通过模拟丢包、损坏和延迟场景，对协议可靠性和边界情况进行测试与调试。",
+      "quality": {
+        "score": 100,
+        "level": "excellent",
+        "issues": [],
+        "suggestion": "keep",
+        "char_count": 433,
+        "content_density": 1.0
+      }
+    },
+    {
+      "chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "split_type": "two_level_regex",
+      "title": "UNSW School of Computer Science and Engineering\n2025.02-2025.05",
+      "parent_title": "教育经历",
+      "start_char": 2558,
+      "end_char": 2785,
+      "char_count": 227,
+      "content": "UNSW School of Computer Science and Engineering\n2025.02-2025.05\nCOMP1511 Tutor• 担任UNSW COMP1511 课程Tutor，负责协助学生理解C 语言基础、程序设计逻辑、调试方法及作业要求。通过课后答疑、代码讲解和问题反馈，帮助学生定位学习难点并提升编程实践能力。在教学过程中锻炼了沟通表达、需求理解、问题拆解和进度跟进能力，也提升了将复杂技术内容转化为易理解语言的能力。",
+      "quality": {
+        "score": 100,
+        "level": "excellent",
+        "issues": [],
+        "suggestion": "keep",
+        "char_count": 227,
+        "content_density": 1.0
+      }
+    }
+  ],
+  "next_stage": "graph_extraction"
+}

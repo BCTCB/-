@@ -1,0 +1,3 @@
+(function () {
+  window.KGUI.initApp();
+})();

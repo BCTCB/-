@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>知识图谱抽取应用 Demo</title>
+
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>知识图谱抽取配置</h2>
+        <p>上传 PDF，配置抽取对象和关系，然后生成知识图谱。</p>
+      </div>
+
+      <div class="sidebar-content">
+        <div class="section">
+          <div class="section-title">
+            <h3>1. PDF 文件</h3>
+            <span>输入</span>
+          </div>
+
+          <div class="upload-box">
+            <input
+              id="pdfInput"
+              class="hidden-file"
+              type="file"
+              accept="application/pdf"
+            />
+
+            <button id="pdfSelectButton" class="secondary">
+              选择本地 PDF
+            </button>
+
+            <p id="fileNameText">尚未选择文件</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">
+            <h3>2. 抽取模式</h3>
+            <span id="modeText">默认抽取</span>
+          </div>
+
+          <div class="mode-options">
+            <label class="mode-option">
+              <input
+                type="radio"
+                name="extractionMode"
+                value="auto"
+                checked
+              />
+              <strong>默认抽取</strong>
+              <span>由系统自动识别实体与关系</span>
+            </label>
+
+            <label class="mode-option">
+              <input
+                type="radio"
+                name="extractionMode"
+                value="custom"
+              />
+              <strong>自定义抽取</strong>
+              <span>指定抽取对象和关系规则</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="customConfig" class="custom-config hidden">
+          <div class="section">
+            <div class="section-title">
+              <h3>3. 抽取对象</h3>
+              <span id="entityCountText">0 个</span>
+            </div>
+
+            <div id="entityList" class="tag-list"></div>
+
+            <div style="margin-top: 12px;">
+              <button id="openEntityModalButton" class="ghost" style="width:100%;">
+                添加抽取对象
+              </button>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <h3>4. 关系规则</h3>
+              <span id="relationCountText">0 条</span>
+            </div>
+
+            <div id="relationList" class="relation-list"></div>
+
+            <div style="margin-top: 12px;">
+              <button id="openRelationModalButton" class="ghost" style="width:100%;">
+                添加关系规则
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div id="statusBox" class="status">
+          等待上传 PDF。
+        </div>
+
+        <div class="progress-panel" aria-live="polite">
+          <div class="progress-top">
+            <span>项目进度</span>
+            <strong id="progressPercentText">0%</strong>
+          </div>
+          <div
+            class="progress-track"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+            aria-label="项目进度"
+          >
+            <div id="progressBarFill" class="progress-fill"></div>
+          </div>
+          <div id="progressStepText" class="progress-step">
+            等待开始处理。
+          </div>
+        </div>
+
+        <button id="extractButton" class="primary" style="width:100%;">
+          一键生成知识图谱
+        </button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="header">
+        <h1>知识图谱可视化输出</h1>
+
+        <div class="toolbar">
+          <button id="fitGraphButton" class="secondary">居中图谱</button>
+          <button id="clearGraphButton" class="danger">清空图谱</button>
+        </div>
+      </div>
+
+      <div class="graph-area">
+        <div id="graph"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- 添加实体 Modal -->
+  <div id="entityModal" class="modal-mask">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>添加抽取对象</h3>
+        <button id="closeEntityModalButton" class="modal-close">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-item">
+          <label>对象类型名称</label>
+          <input id="entityInput" placeholder="例如：系统 / 设备 / 部件 / 故障原因" />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="cancelEntityButton" class="secondary">取消</button>
+        <button id="confirmEntityButton" class="primary">添加</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 添加关系 Modal -->
+  <div id="relationModal" class="modal-mask">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>添加关系规则</h3>
+        <button id="closeRelationModalButton" class="modal-close">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-item">
+          <label>起点对象类型</label>
+          <select id="fromTypeSelect"></select>
+        </div>
+
+        <div class="form-item">
+          <label>关系名称</label>
+          <input id="relationNameInput" placeholder="例如：包含 / 导致 / 采取措施" />
+        </div>
+
+        <div class="form-item">
+          <label>终点对象类型</label>
+          <select id="toTypeSelect"></select>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="cancelRelationButton" class="secondary">取消</button>
+        <button id="confirmRelationButton" class="primary">添加</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/state.js" defer></script>
+  <script src="assets/js/api.js" defer></script>
+  <script src="assets/js/graph.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+{
+  "extraction_id": "b9babe51841244e8be3ac05902fa6dbc",
+  "source_txt_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/extracted_text/b9babe51841244e8be3ac05902fa6dbc.txt",
+  "strategy_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/strategy/b9babe51841244e8be3ac05902fa6dbc_split_strategy.json",
+  "strategy": {
+    "document_structure_analysis": {
+      "structure_type": "item_based",
+      "structure_description": "资料是一份个人简历，包含个人信息、求职意向、个人优势、专业技能、项目经历、教育经历、资格证书、社团经历等部分。每个部分由明确的标题（如“个人优势”、“专业技能”、“项目经历”）引导，项目经历下又包含多个项目（如“智能在线测评与互动答题平台Demo”、“农业场景AI 害虫识别与检测项目”等），每个项目有项目名称、时间、职责描述和成果。整体结构清晰，以标题和项目为单元。",
+      "main_organization_signals": [
+        "资料包含明确的标题行，如“个人优势”、“专业技能”、“项目经历”、“教育经历”等",
+        "项目经历部分包含多个项目，每个项目有独立的名称和时间",
+        "每个项目下包含多个以“•”开头的条目，描述具体职责和成果"
+      ]
+    },
+    "recommended_split_strategy": {
+      "strategy_name": "按标题和项目进行二级切分",
+      "strategy_level": "two_level",
+      "reason": "资料具有清晰的层级结构：一级标题（如“个人优势”、“专业技能”、“项目经历”）和二级标题（如项目名称“智能在线测评与互动答题平台Demo”）。按此结构切分可以保留上下文关系，便于后续知识图谱抽取。",
+      "split_unit": "项目经历下的每个项目作为一级切分单元，项目内的每个“•”条目作为二级切分单元",
+      "split_unit_should_contain": [
+        "一级切分单元应包含项目名称、时间、职责描述和成果",
+        "二级切分单元应包含单个“•”条目内容"
+      ]
+    },
+    "split_rules": {
+      "primary_split_rule": "以项目名称（如“智能在线测评与互动答题平台Demo”）作为一级切分边界，每个项目独立为一个一级单元",
+      "secondary_split_rule": "以“•”开头的条目作为二级切分边界，每个条目独立为一个二级单元",
+      "start_boundary_rule": "一级单元以项目名称行开始，二级单元以“•”行开始",
+      "end_boundary_rule": "一级单元以下一个项目名称或文档结束为结束，二级单元以下一个“•”或项目结束为结束",
+      "context_retention_rule": "保留一级单元的标题（项目名称）作为父级上下文，二级单元保留其所属的一级单元标题",
+      "metadata_fields": [
+        "chunk_id",
+        "title",
+        "parent_title",
+        "start_char",
+        "end_char",
+        "content"
+      ]
+    },
+    "executable_split_config": {
+      "split_mode": "two_level_regex",
+      "primary_unit_name": "项目",
+      "secondary_unit_name": "条目",
+      "primary_start_patterns": [
+        "^[\\u4e00-\\u9fa5A-Za-z0-9\\s\\-（）()]+\\d{4}\\.\\d{2}-\\d{4}\\.\\d{2}$"
+      ],
+      "secondary_start_patterns": [
+        "^•\\s"
+      ],
+      "parent_context_patterns": [
+        "^(个人优势|专业技能|项目经历|教育经历|资格证书|社团经历)"
+      ],
+      "end_boundary_rule": "next_primary_or_secondary_start",
+      "keep_parent_context": true,
+      "metadata_fields": [
+        "chunk_id",
+        "title",
+        "parent_title",
+        "start_char",
+        "end_char",
+        "content"
+      ],
+      "fallback": {
+        "enabled": true,
+        "method": "generic_heading_then_fixed_length",
+        "max_chars": 3000,
+        "overlap": 300
+      }
+    },
+    "special_case_handling": [
+      {
+        "case": "项目名称可能包含英文和中文混合，如“基于UDP 的可靠传输协议（URP）”，且时间格式可能不同",
+        "handling": "使用更宽松的正则匹配项目名称行，允许包含英文、中文、数字、括号等字符，时间格式为YYYY.MM-YYYY.MM"
+      },
+      {
+        "case": "部分项目名称后可能没有时间，如“COMP6080 前端网页开发课程项目组”",
+        "handling": "对于没有时间的项目名称，使用更通用的正则匹配，如“^[\\u4e00-\\u9fa5A-Za-z0-9\\s\\-（）()]+$”"
+      }
+    ],
+    "not_recommended_strategies": [
+      {
+        "strategy": "固定长度切分",
+        "reason": "资料具有明确的结构，固定长度切分会破坏标题和条目的完整性，不利于知识图谱抽取"
+      },
+      {
+        "strategy": "按段落切分",
+        "reason": "段落可能包含多个条目，且标题和项目名称可能被分割，不利于保留上下文"
+      }
+    ],
+    "final_decision": {
+      "use_fixed_length_chunking": false,
+      "need_second_pass_split": true,
+      "recommended_for_kg_extraction": "项目经历下的每个项目作为一级单元，项目内的每个“•”条目作为二级单元"
+    }
+  },
+  "next_stage": "chunk_generation"
+}

@@ -1,0 +1,91 @@
+{
+  "extraction_id": "55c030d365b14d9596e42beaaaee9174",
+  "source_txt_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/extracted_text/55c030d365b14d9596e42beaaaee9174.txt",
+  "strategy_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/strategy/55c030d365b14d9596e42beaaaee9174_split_strategy.json",
+  "strategy": {
+    "document_structure_analysis": {
+      "structure_type": "section_based",
+      "structure_description": "该资料是一份个人简历，包含个人优势、专业技能、项目经历、教育经历、资格证书等几个主要部分。每个部分下包含多个条目，但整体结构以章节标题（如“个人优势”、“专业技能”、“项目经历”）为一级划分，每个章节下是连续的文本或列表项。",
+      "main_organization_signals": [
+        "存在明确的章节标题：个人优势、专业技能、项目经历、教育经历、资格证书、经历补充",
+        "章节标题后跟随的是列表项或段落，没有进一步的结构化子标题",
+        "项目经历部分包含三个项目，每个项目有项目名称和时间，但项目名称没有统一的编号或格式"
+      ]
+    },
+    "recommended_split_strategy": {
+      "strategy_name": "按章节标题切分",
+      "strategy_level": "single_level",
+      "reason": "资料具有清晰的章节结构，每个章节内容相对独立，适合按章节标题进行一级切分。项目经历部分虽然包含多个项目，但项目名称没有统一的编号或格式，且项目内容较短，不适合进一步二级切分。",
+      "split_unit": "章节",
+      "split_unit_should_contain": [
+        "章节标题",
+        "章节下的所有内容"
+      ]
+    },
+    "split_rules": {
+      "primary_split_rule": "以章节标题（如“个人优势”、“专业技能”、“项目经历”等）作为一级切分边界，每个章节及其内容作为一个切分单元。",
+      "secondary_split_rule": null,
+      "start_boundary_rule": "匹配章节标题行，标题行以“个人优势”、“专业技能”、“项目经历”、“教育经历”、“资格证书”、“经历补充”等关键词开头。",
+      "end_boundary_rule": "下一个章节标题或文档结束",
+      "context_retention_rule": "保留章节标题作为元数据，不保留其他上下文信息。",
+      "metadata_fields": [
+        "chunk_id",
+        "title",
+        "start_char",
+        "end_char",
+        "content"
+      ]
+    },
+    "executable_split_config": {
+      "split_mode": "heading_regex",
+      "primary_unit_name": "章节",
+      "secondary_unit_name": null,
+      "primary_start_patterns": [
+        "^(?:个人优势|专业技能|项目经历|教育经历|资格证书|经历补充)\\s*$"
+      ],
+      "secondary_start_patterns": [],
+      "parent_context_patterns": [],
+      "end_boundary_rule": "next_same_level_start",
+      "keep_parent_context": false,
+      "metadata_fields": [
+        "chunk_id",
+        "title",
+        "start_char",
+        "end_char",
+        "content"
+      ],
+      "fallback": {
+        "enabled": true,
+        "method": "generic_heading_then_fixed_length",
+        "max_chars": 3000,
+        "overlap": 300
+      }
+    },
+    "special_case_handling": [
+      {
+        "case": "项目经历部分包含多个项目，但项目名称没有统一格式",
+        "handling": "不进行二级切分，将整个项目经历作为一个切分单元"
+      },
+      {
+        "case": "文档开头没有章节标题（如姓名、联系方式等）",
+        "handling": "将开头部分作为第一个切分单元，标题设为'个人信息'"
+      }
+    ],
+    "not_recommended_strategies": [
+      {
+        "strategy": "按固定长度切分",
+        "reason": "资料具有明显的章节结构，按固定长度切分会破坏章节的完整性，不利于后续知识图谱抽取"
+      },
+      {
+        "strategy": "按列表项切分",
+        "reason": "列表项内容较短且相互关联，单独切分会导致信息碎片化"
+      }
+    ],
+    "final_decision": {
+      "use_fixed_length_chunking": false,
+      "need_second_pass_split": false,
+      "recommended_for_kg_extraction": "按章节标题切分后的每个章节"
+    }
+  },
+  "next_stage": "chunk_generation"
+}

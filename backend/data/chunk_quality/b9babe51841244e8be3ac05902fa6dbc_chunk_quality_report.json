@@ -1,0 +1,20 @@
+{
+  "summary": {
+    "total_chunks": 11,
+    "problem_chunks": 0,
+    "problem_ratio": 0.0,
+    "average_score": 89.09
+  },
+  "level_count": {
+    "excellent": 7,
+    "good": 4
+  },
+  "issue_count": {
+    "too_short": 4
+  },
+  "suggestion_count": {
+    "keep": 7,
+    "review_or_merge": 4
+  },
+  "problem_preview_first_20": []
+}

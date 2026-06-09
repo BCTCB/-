@@ -1,0 +1,1645 @@
+{
+  "success": true,
+  "extraction_id": "0bcc055f27524a7e9322990ec573e4d6",
+  "source_graph_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/relation_cleaned_graphs/0bcc055f27524a7e9322990ec573e4d6_relation_cleaned_graph.json",
+  "quality_report_path": "/Users/wenxiaozhu/Desktop/实习项目/agent/project/backend/data/graph_quality_reports/0bcc055f27524a7e9322990ec573e4d6_quality_report.json",
+  "report": {
+    "node_count": 61,
+    "edge_count": 57,
+    "skipped_edge_count": 0,
+    "entity_type_count": {
+      "概念": 13,
+      "问题": 10,
+      "工具": 9,
+      "指标": 8,
+      "方法": 7,
+      "步骤": 4,
+      "主题": 3,
+      "对象": 3,
+      "任务": 2,
+      "组织": 1,
+      "角色": 1
+    },
+    "relation_type_count": {
+      "使用": 22,
+      "包含": 15,
+      "识别": 9,
+      "产生": 5,
+      "解释": 4,
+      "属于": 1,
+      "影响": 1
+    },
+    "source_report": {
+      "chunk_count": 3,
+      "processed_parts": 3,
+      "skipped_chunks": 0,
+      "node_count": 61,
+      "edge_count": 57,
+      "warning_count": 0,
+      "entity_type_count": {
+        "概念": 13,
+        "问题": 10,
+        "工具": 9,
+        "指标": 8,
+        "方法": 8,
+        "步骤": 4,
+        "主题": 3,
+        "对象": 3,
+        "任务": 2,
+        "组织": 1,
+        "角色": 1
+      },
+      "relation_type_count": {
+        "使用": 22,
+        "包含": 15,
+        "识别": 9,
+        "产生": 5,
+        "解释": 4,
+        "属于": 1,
+        "影响": 1
+      },
+      "skipped_chunk_preview": []
+    }
+  },
+  "quality": {
+    "score": 99,
+    "level": "good",
+    "deductions": [
+      {
+        "reason": "孤立节点占比较高",
+        "count": 3,
+        "penalty": 1
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "rn1",
+      "label": "农业场景AI 害虫识别与检测项目",
+      "type": "主题",
+      "title": "一个AI项目，专注于农业场景下的害虫自动识别与检测，时间跨度为2026年1月至5月",
+      "aliases": [],
+      "degree": {
+        "in": 0,
+        "out": 9,
+        "total": 9
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "农业场景AI 害虫识别与检测项目 2026.01-2026.05"
+    },
+    {
+      "id": "rn2",
+      "label": "AgroPest-12 数据集",
+      "type": "对象",
+      "title": "用于农业害虫图像检测与分类的数据集",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "项目基于AgroPest-12 数据集"
+    },
+    {
+      "id": "rn3",
+      "label": "害虫目标检测",
+      "type": "任务",
+      "title": "项目中的任务之一，涉及检测图像中的害虫目标",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "任务包括害虫目标检测与图像分类"
+    },
+    {
+      "id": "rn4",
+      "label": "图像分类",
+      "type": "任务",
+      "title": "项目中的任务之一，涉及对害虫图像进行分类",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "任务包括害虫目标检测与图像分类"
+    },
+    {
+      "id": "rn5",
+      "label": "YOLOv11",
+      "type": "工具",
+      "title": "一种目标检测模型，用于害虫检测",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+    },
+    {
+      "id": "rn6",
+      "label": "Faster R-CNN",
+      "type": "工具",
+      "title": "一种目标检测模型，用于害虫检测",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+    },
+    {
+      "id": "rn7",
+      "label": "EfficientNet-B0",
+      "type": "工具",
+      "title": "一种深度学习分类模型，用于害虫图像分类",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+    },
+    {
+      "id": "rn8",
+      "label": "SVM + BoW",
+      "type": "工具",
+      "title": "一种传统机器学习方法，结合支持向量机和词袋模型，用于害虫分类",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+    },
+    {
+      "id": "rn9",
+      "label": "Ensemble Weighted Fusion",
+      "type": "工具",
+      "title": "一种集成融合方案，用于综合多个模型的预测结果",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "团队测试YOLOv11、Faster R-CNN、EfficientNet-B0、SVM + BoW、EnsembleWeighted Fusion 等方法"
+    },
+    {
+      "id": "rn10",
+      "label": "mAP",
+      "type": "指标",
+      "title": "平均精度均值，用于评估目标检测模型性能",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+    },
+    {
+      "id": "rn11",
+      "label": "Precision",
+      "type": "指标",
+      "title": "精确率，用于评估模型预测的准确性",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+    },
+    {
+      "id": "rn12",
+      "label": "Recall",
+      "type": "指标",
+      "title": "召回率，用于评估模型检测的全面性",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+    },
+    {
+      "id": "rn13",
+      "label": "F1",
+      "type": "指标",
+      "title": "F1分数，精确率和召回率的调和平均",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+    },
+    {
+      "id": "rn14",
+      "label": "Accuracy",
+      "type": "指标",
+      "title": "准确率，用于评估分类模型的正确率",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+    },
+    {
+      "id": "rn15",
+      "label": "AUC",
+      "type": "指标",
+      "title": "ROC曲线下面积，用于评估分类模型的区分能力",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "通过mAP、Precision、Recall、F1、Accuracy、AUC 等指标进行综合评估"
+    },
+    {
+      "id": "rn16",
+      "label": "多模型对比实验与方案评估流程",
+      "type": "方法",
+      "title": "通过横向比较不同模型在多个指标上的表现，筛选最优方案的方法",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 13,
+        "total": 14
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "完成多模型对比实验与方案评估流程，基于mAP、Precision、Recall、F1、Accuracy、AUC、训练时间和推理成本等指标筛选表现最优方案"
+    },
+    {
+      "id": "rn17",
+      "label": "类别误判",
+      "type": "问题",
+      "title": "模型将害虫类别识别错误的问题",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "整理类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题"
+    },
+    {
+      "id": "rn18",
+      "label": "检测框偏差",
+      "type": "问题",
+      "title": "目标检测中预测框与真实框存在偏差的问题",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "整理类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题"
+    },
+    {
+      "id": "rn19",
+      "label": "复杂背景干扰",
+      "type": "问题",
+      "title": "图像背景复杂导致模型检测或分类性能下降的问题",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "整理类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题"
+    },
+    {
+      "id": "rn20",
+      "label": "过拟合",
+      "type": "问题",
+      "title": "模型在训练数据上表现好但在新数据上表现差的问题",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "整理类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题"
+    },
+    {
+      "id": "rn21",
+      "label": "欠拟合",
+      "type": "问题",
+      "title": "模型未能充分学习训练数据特征的问题",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "整理类别误判、检测框偏差、复杂背景干扰、过拟合和欠拟合等问题"
+    },
+    {
+      "id": "rn22",
+      "label": "训练时间",
+      "type": "指标",
+      "title": "模型训练所需的时间，用于评估效率",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "基于mAP、Precision、Recall、F1、Accuracy、AUC、训练时间和推理成本等指标筛选表现最优方案"
+    },
+    {
+      "id": "rn23",
+      "label": "推理成本",
+      "type": "指标",
+      "title": "模型推理时所需的计算资源或时间成本",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": "基于mAP、Precision、Recall、F1、Accuracy、AUC、训练时间和推理成本等指标筛选表现最优方案"
+    },
+    {
+      "id": "rn24",
+      "label": "基于UDP的可靠传输协议（URP）",
+      "type": "主题",
+      "title": "一个基于UDP实现的可靠文件传输协议项目",
+      "aliases": [
+        "URP"
+      ],
+      "degree": {
+        "in": 0,
+        "out": 16,
+        "total": 16
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "基于UDP 的可靠传输协议（URP）"
+    },
+    {
+      "id": "rn25",
+      "label": "UDP Socket编程",
+      "type": "方法",
+      "title": "使用UDP Socket进行网络编程的方法",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "基于UDP Socket 编程实现可靠文件传输协议"
+    },
+    {
+      "id": "rn26",
+      "label": "Sender程序",
+      "type": "对象",
+      "title": "发送端程序，负责文件分片、数据传输等",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "设计Sender 和Receiver 两端程序"
+    },
+    {
+      "id": "rn27",
+      "label": "Receiver程序",
+      "type": "对象",
+      "title": "接收端程序，负责接收数据并重组文件",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "设计Sender 和Receiver 两端程序"
+    },
+    {
+      "id": "rn28",
+      "label": "文件分片",
+      "type": "步骤",
+      "title": "将文件分割成多个片段进行传输",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "完成文件分片、数据传输、确认回复和文件重组流程"
+    },
+    {
+      "id": "rn29",
+      "label": "数据传输",
+      "type": "步骤",
+      "title": "将分片后的数据通过网络发送",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "完成文件分片、数据传输、确认回复和文件重组流程"
+    },
+    {
+      "id": "rn30",
+      "label": "确认回复",
+      "type": "步骤",
+      "title": "接收端向发送端发送确认消息",
+      "aliases": [
+        "ACK"
+      ],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "完成文件分片、数据传输、确认回复和文件重组流程"
+    },
+    {
+      "id": "rn31",
+      "label": "文件重组",
+      "type": "步骤",
+      "title": "接收端将收到的分片重新组合成完整文件",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "完成文件分片、数据传输、确认回复和文件重组流程"
+    },
+    {
+      "id": "rn32",
+      "label": "序列号",
+      "type": "概念",
+      "title": "为每个数据包分配的唯一编号，用于排序和确认",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "实现序列号、累计确认ACK、滑动窗口和流水线传输机制"
+    },
+    {
+      "id": "rn33",
+      "label": "累计确认ACK",
+      "type": "概念",
+      "title": "一种确认机制，确认所有小于等于某个序列号的数据包都已收到",
+      "aliases": [
+        "ACK"
+      ],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "实现序列号、累计确认ACK、滑动窗口和流水线传输机制"
+    },
+    {
+      "id": "rn34",
+      "label": "滑动窗口",
+      "type": "概念",
+      "title": "一种流量控制和可靠传输机制，允许发送方在未收到确认前连续发送多个数据包",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "实现序列号、累计确认ACK、滑动窗口和流水线传输机制"
+    },
+    {
+      "id": "rn35",
+      "label": "流水线传输",
+      "type": "概念",
+      "title": "允许发送方连续发送多个数据包而不必等待每个确认的传输方式",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "实现序列号、累计确认ACK、滑动窗口和流水线传输机制"
+    },
+    {
+      "id": "rn36",
+      "label": "超时重传",
+      "type": "方法",
+      "title": "发送方在超时后未收到确认时重新发送数据包；发送方收到多个重复ACK后立即重传丢失的数据包，无需等待超时",
+      "aliases": [
+        "快速重传"
+      ],
+      "degree": {
+        "in": 1,
+        "out": 1,
+        "total": 2
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "设计超时重传和快速重传机制"
+    },
+    {
+      "id": "rn38",
+      "label": "数据包丢失",
+      "type": "问题",
+      "title": "数据包在传输过程中丢失",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "处理数据包丢失、损坏、乱序和延迟等异常情况"
+    },
+    {
+      "id": "rn39",
+      "label": "数据包损坏",
+      "type": "问题",
+      "title": "数据包在传输过程中内容被破坏",
+      "aliases": [],
+      "degree": {
+        "in": 0,
+        "out": 0,
+        "total": 0
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "处理数据包丢失、损坏、乱序和延迟等异常情况"
+    },
+    {
+      "id": "rn40",
+      "label": "数据包乱序",
+      "type": "问题",
+      "title": "数据包到达接收端的顺序与发送顺序不一致",
+      "aliases": [],
+      "degree": {
+        "in": 0,
+        "out": 0,
+        "total": 0
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "处理数据包丢失、损坏、乱序和延迟等异常情况"
+    },
+    {
+      "id": "rn41",
+      "label": "数据包延迟",
+      "type": "问题",
+      "title": "数据包在传输过程中出现较大时延",
+      "aliases": [],
+      "degree": {
+        "in": 0,
+        "out": 0,
+        "total": 0
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "处理数据包丢失、损坏、乱序和延迟等异常情况"
+    },
+    {
+      "id": "rn42",
+      "label": "不可靠网络模拟模块",
+      "type": "工具",
+      "title": "用于模拟丢包、损坏和延迟场景的模块",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "构建不可靠网络模拟模块，模拟丢包、损坏和延迟场景"
+    },
+    {
+      "id": "rn43",
+      "label": "日志输出",
+      "type": "工具",
+      "title": "用于记录程序运行信息，辅助定位问题",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "使用日志输出和测试样例定位传输过程中的边界问题"
+    },
+    {
+      "id": "rn44",
+      "label": "测试样例",
+      "type": "工具",
+      "title": "用于测试协议功能的样例数据",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "使用日志输出和测试样例定位传输过程中的边界问题"
+    },
+    {
+      "id": "rn45",
+      "label": "Python",
+      "type": "工具",
+      "title": "实现该协议的编程语言",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": "使用Python 实现Sender、Receiver 和网络异常模拟模块"
+    },
+    {
+      "id": "rn46",
+      "label": "UNSW School of Computer Science and Engineering",
+      "type": "组织",
+      "title": "新南威尔士大学计算机科学与工程学院",
+      "aliases": [],
+      "degree": {
+        "in": 0,
+        "out": 1,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "UNSW School of Computer Science and Engineering"
+    },
+    {
+      "id": "rn47",
+      "label": "COMP1511 Tutor",
+      "type": "角色",
+      "title": "担任UNSW COMP1511课程Tutor，负责协助学生理解C语言基础等",
+      "aliases": [],
+      "degree": {
+        "in": 0,
+        "out": 13,
+        "total": 13
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "担任UNSW COMP1511 课程Tutor"
+    },
+    {
+      "id": "rn48",
+      "label": "COMP1511课程",
+      "type": "主题",
+      "title": "UNSW的计算机科学入门课程",
+      "aliases": [],
+      "degree": {
+        "in": 2,
+        "out": 0,
+        "total": 2
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "UNSW COMP1511 课程"
+    },
+    {
+      "id": "rn49",
+      "label": "C语言基础",
+      "type": "概念",
+      "title": "C语言的基础知识",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "协助学生理解C 语言基础"
+    },
+    {
+      "id": "rn50",
+      "label": "程序设计逻辑",
+      "type": "概念",
+      "title": "程序设计的逻辑思维",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "协助学生理解程序设计逻辑"
+    },
+    {
+      "id": "rn51",
+      "label": "调试方法",
+      "type": "方法",
+      "title": "程序调试的方法",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "协助学生理解调试方法"
+    },
+    {
+      "id": "rn52",
+      "label": "作业要求",
+      "type": "概念",
+      "title": "课程作业的具体要求",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "协助学生理解作业要求"
+    },
+    {
+      "id": "rn53",
+      "label": "课后答疑",
+      "type": "方法",
+      "title": "课后为学生解答疑问",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 1,
+        "total": 2
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "通过课后答疑"
+    },
+    {
+      "id": "rn54",
+      "label": "代码讲解",
+      "type": "方法",
+      "title": "讲解代码帮助学生理解",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 1,
+        "total": 2
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "通过代码讲解"
+    },
+    {
+      "id": "rn55",
+      "label": "问题反馈",
+      "type": "方法",
+      "title": "向学生提供问题反馈",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 1,
+        "total": 2
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "通过问题反馈"
+    },
+    {
+      "id": "rn56",
+      "label": "学习难点",
+      "type": "问题",
+      "title": "学生在学习过程中遇到的困难",
+      "aliases": [],
+      "degree": {
+        "in": 3,
+        "out": 1,
+        "total": 4
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "帮助学生定位学习难点"
+    },
+    {
+      "id": "rn57",
+      "label": "编程实践能力",
+      "type": "概念",
+      "title": "学生编程实践的能力",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "提升编程实践能力"
+    },
+    {
+      "id": "rn58",
+      "label": "沟通表达能力",
+      "type": "概念",
+      "title": "在教学过程中锻炼的沟通表达能力",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "锻炼了沟通表达"
+    },
+    {
+      "id": "rn59",
+      "label": "需求理解能力",
+      "type": "概念",
+      "title": "在教学过程中锻炼的需求理解能力",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "锻炼了需求理解"
+    },
+    {
+      "id": "rn60",
+      "label": "问题拆解能力",
+      "type": "概念",
+      "title": "在教学过程中锻炼的问题拆解能力",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "锻炼了问题拆解"
+    },
+    {
+      "id": "rn61",
+      "label": "进度跟进能力",
+      "type": "概念",
+      "title": "在教学过程中锻炼的进度跟进能力",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "锻炼了进度跟进"
+    },
+    {
+      "id": "rn62",
+      "label": "技术内容转化能力",
+      "type": "概念",
+      "title": "将复杂技术内容转化为易理解语言的能力",
+      "aliases": [],
+      "degree": {
+        "in": 1,
+        "out": 0,
+        "total": 1
+      },
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": "提升了将复杂技术内容转化为易理解语言的能力"
+    }
+  ],
+  "edges": [
+    {
+      "id": "fe1",
+      "from": "rn1",
+      "to": "rn2",
+      "label": "使用",
+      "relation": "使用",
+      "title": "项目使用AgroPest-12数据集",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe2",
+      "from": "rn1",
+      "to": "rn3",
+      "label": "包含",
+      "relation": "包含",
+      "title": "项目包含害虫目标检测任务",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe3",
+      "from": "rn1",
+      "to": "rn4",
+      "label": "包含",
+      "relation": "包含",
+      "title": "项目包含图像分类任务",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe4",
+      "from": "rn1",
+      "to": "rn5",
+      "label": "使用",
+      "relation": "使用",
+      "title": "项目测试了YOLOv11模型",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe5",
+      "from": "rn1",
+      "to": "rn6",
+      "label": "使用",
+      "relation": "使用",
+      "title": "项目测试了Faster R-CNN模型",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe6",
+      "from": "rn1",
+      "to": "rn7",
+      "label": "使用",
+      "relation": "使用",
+      "title": "项目测试了EfficientNet-B0模型",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe7",
+      "from": "rn1",
+      "to": "rn8",
+      "label": "使用",
+      "relation": "使用",
+      "title": "项目测试了SVM + BoW方法",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe8",
+      "from": "rn1",
+      "to": "rn9",
+      "label": "使用",
+      "relation": "使用",
+      "title": "项目测试了Ensemble Weighted Fusion方法",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe9",
+      "from": "rn1",
+      "to": "rn16",
+      "label": "使用",
+      "relation": "使用",
+      "title": "项目使用了多模型对比实验与方案评估流程",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe10",
+      "from": "rn16",
+      "to": "rn10",
+      "label": "使用",
+      "relation": "使用",
+      "title": "评估流程使用mAP指标",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe11",
+      "from": "rn16",
+      "to": "rn11",
+      "label": "使用",
+      "relation": "使用",
+      "title": "评估流程使用Precision指标",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe12",
+      "from": "rn16",
+      "to": "rn12",
+      "label": "使用",
+      "relation": "使用",
+      "title": "评估流程使用Recall指标",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe13",
+      "from": "rn16",
+      "to": "rn13",
+      "label": "使用",
+      "relation": "使用",
+      "title": "评估流程使用F1指标",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe14",
+      "from": "rn16",
+      "to": "rn14",
+      "label": "使用",
+      "relation": "使用",
+      "title": "评估流程使用Accuracy指标",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe15",
+      "from": "rn16",
+      "to": "rn15",
+      "label": "使用",
+      "relation": "使用",
+      "title": "评估流程使用AUC指标",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe16",
+      "from": "rn16",
+      "to": "rn22",
+      "label": "使用",
+      "relation": "使用",
+      "title": "评估流程使用训练时间指标",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe17",
+      "from": "rn16",
+      "to": "rn23",
+      "label": "使用",
+      "relation": "使用",
+      "title": "评估流程使用推理成本指标",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe18",
+      "from": "rn16",
+      "to": "rn17",
+      "label": "识别",
+      "relation": "识别",
+      "title": "评估流程识别出类别误判问题",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe19",
+      "from": "rn16",
+      "to": "rn18",
+      "label": "识别",
+      "relation": "识别",
+      "title": "评估流程识别出检测框偏差问题",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe20",
+      "from": "rn16",
+      "to": "rn19",
+      "label": "识别",
+      "relation": "识别",
+      "title": "评估流程识别出复杂背景干扰问题",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe21",
+      "from": "rn16",
+      "to": "rn20",
+      "label": "识别",
+      "relation": "识别",
+      "title": "评估流程识别出过拟合问题",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe22",
+      "from": "rn16",
+      "to": "rn21",
+      "label": "识别",
+      "relation": "识别",
+      "title": "评估流程识别出欠拟合问题",
+      "source_chunk_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605",
+      "source_part_id": "two_level_0001_0001_农业场景AI_害虫识别与检测项目_202601-202605__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe23",
+      "from": "rn24",
+      "to": "rn25",
+      "label": "使用",
+      "relation": "使用",
+      "title": "URP协议基于UDP Socket编程实现",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe24",
+      "from": "rn24",
+      "to": "rn26",
+      "label": "包含",
+      "relation": "包含",
+      "title": "URP协议包含Sender程序",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe25",
+      "from": "rn24",
+      "to": "rn27",
+      "label": "包含",
+      "relation": "包含",
+      "title": "URP协议包含Receiver程序",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe26",
+      "from": "rn24",
+      "to": "rn28",
+      "label": "包含",
+      "relation": "包含",
+      "title": "URP协议包含文件分片步骤",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe27",
+      "from": "rn24",
+      "to": "rn29",
+      "label": "包含",
+      "relation": "包含",
+      "title": "URP协议包含数据传输步骤",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe28",
+      "from": "rn24",
+      "to": "rn30",
+      "label": "包含",
+      "relation": "包含",
+      "title": "URP协议包含确认回复步骤",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe29",
+      "from": "rn24",
+      "to": "rn31",
+      "label": "包含",
+      "relation": "包含",
+      "title": "URP协议包含文件重组步骤",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe30",
+      "from": "rn24",
+      "to": "rn32",
+      "label": "包含",
+      "relation": "包含",
+      "title": "URP协议实现了序列号机制",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe31",
+      "from": "rn24",
+      "to": "rn33",
+      "label": "包含",
+      "relation": "包含",
+      "title": "URP协议实现了累计确认ACK机制",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe32",
+      "from": "rn24",
+      "to": "rn34",
+      "label": "包含",
+      "relation": "包含",
+      "title": "URP协议实现了滑动窗口机制",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe33",
+      "from": "rn24",
+      "to": "rn35",
+      "label": "包含",
+      "relation": "包含",
+      "title": "URP协议实现了流水线传输机制",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe34",
+      "from": "rn24",
+      "to": "rn36",
+      "label": "包含",
+      "relation": "包含",
+      "title": "URP协议设计了超时重传机制",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe35",
+      "from": "rn36",
+      "to": "rn38",
+      "label": "识别",
+      "relation": "识别",
+      "title": "超时重传机制用于解决数据包丢失问题",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe36",
+      "from": "rn24",
+      "to": "rn42",
+      "label": "包含",
+      "relation": "包含",
+      "title": "URP协议包含不可靠网络模拟模块",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe37",
+      "from": "rn24",
+      "to": "rn43",
+      "label": "使用",
+      "relation": "使用",
+      "title": "URP协议使用日志输出进行调试",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe38",
+      "from": "rn24",
+      "to": "rn44",
+      "label": "使用",
+      "relation": "使用",
+      "title": "URP协议使用测试样例进行调试",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe39",
+      "from": "rn24",
+      "to": "rn45",
+      "label": "使用",
+      "relation": "使用",
+      "title": "URP协议使用Python实现",
+      "source_chunk_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509",
+      "source_part_id": "two_level_0001_0002_基于UDP_的可靠传输协议URP_202506-202509__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe40",
+      "from": "rn46",
+      "to": "rn48",
+      "label": "包含",
+      "relation": "包含",
+      "title": "UNSW School of Computer Science and Engineering 开设 COMP1511课程",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe41",
+      "from": "rn47",
+      "to": "rn48",
+      "label": "属于",
+      "relation": "属于",
+      "title": "COMP1511 Tutor 是 COMP1511课程 的助教角色",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe42",
+      "from": "rn47",
+      "to": "rn49",
+      "label": "解释",
+      "relation": "解释",
+      "title": "Tutor 协助学生理解 C语言基础",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe43",
+      "from": "rn47",
+      "to": "rn50",
+      "label": "解释",
+      "relation": "解释",
+      "title": "Tutor 协助学生理解 程序设计逻辑",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe44",
+      "from": "rn47",
+      "to": "rn51",
+      "label": "解释",
+      "relation": "解释",
+      "title": "Tutor 协助学生理解 调试方法",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe45",
+      "from": "rn47",
+      "to": "rn52",
+      "label": "解释",
+      "relation": "解释",
+      "title": "Tutor 协助学生理解 作业要求",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe46",
+      "from": "rn47",
+      "to": "rn53",
+      "label": "使用",
+      "relation": "使用",
+      "title": "Tutor 使用课后答疑的方法",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe47",
+      "from": "rn47",
+      "to": "rn54",
+      "label": "使用",
+      "relation": "使用",
+      "title": "Tutor 使用代码讲解的方法",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe48",
+      "from": "rn47",
+      "to": "rn55",
+      "label": "使用",
+      "relation": "使用",
+      "title": "Tutor 使用问题反馈的方法",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe49",
+      "from": "rn53",
+      "to": "rn56",
+      "label": "识别",
+      "relation": "识别",
+      "title": "课后答疑帮助学生定位学习难点",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe50",
+      "from": "rn54",
+      "to": "rn56",
+      "label": "识别",
+      "relation": "识别",
+      "title": "代码讲解帮助学生定位学习难点",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe51",
+      "from": "rn55",
+      "to": "rn56",
+      "label": "识别",
+      "relation": "识别",
+      "title": "问题反馈帮助学生定位学习难点",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe52",
+      "from": "rn56",
+      "to": "rn57",
+      "label": "影响",
+      "relation": "影响",
+      "title": "解决学习难点有助于提升编程实践能力",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe53",
+      "from": "rn47",
+      "to": "rn58",
+      "label": "产生",
+      "relation": "产生",
+      "title": "担任Tutor锻炼了沟通表达能力",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe54",
+      "from": "rn47",
+      "to": "rn59",
+      "label": "产生",
+      "relation": "产生",
+      "title": "担任Tutor锻炼了需求理解能力",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe55",
+      "from": "rn47",
+      "to": "rn60",
+      "label": "产生",
+      "relation": "产生",
+      "title": "担任Tutor锻炼了问题拆解能力",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe56",
+      "from": "rn47",
+      "to": "rn61",
+      "label": "产生",
+      "relation": "产生",
+      "title": "担任Tutor锻炼了进度跟进能力",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    },
+    {
+      "id": "fe57",
+      "from": "rn47",
+      "to": "rn62",
+      "label": "产生",
+      "relation": "产生",
+      "title": "担任Tutor提升了技术内容转化能力",
+      "source_chunk_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi",
+      "source_part_id": "two_level_0002_0001_UNSW_School_of_Computer_Science_and_Engi__part_001",
+      "evidence": ""
+    }
+  ],
+  "skipped_edges": [],
+  "metadata": {
+    "format": "vis-network-compatible",
+    "node_fields": [
+      "id",
+      "label",
+      "type"
+    ],
+    "edge_fields": [
+      "from",
+      "to",
+      "label"
+    ],
+    "next_stage": "visualization"
+  },
+  "next_stage": "visualization"
+}
