@@ -2,204 +2,182 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <title>知识图谱抽取应用 Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GraphMind 项目 Agent</title>
 
-  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <script src="https://unpkg.com/@antv/g6@4.8.24/dist/g6.min.js"></script>
 
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body>
   <div class="app">
-    <aside class="sidebar">
+    <aside class="sidebar project-sidebar" aria-label="项目导航">
       <div class="sidebar-header">
-        <h2>知识图谱抽取配置</h2>
-        <p>上传 PDF，配置抽取对象和关系，然后生成知识图谱。</p>
+        <div class="brand-mark" aria-hidden="true">GM</div>
+        <div>
+          <h2>GraphMind</h2>
+          <p>项目型文档智能 Agent</p>
+        </div>
       </div>
 
       <div class="sidebar-content">
-        <div class="section">
-          <div class="section-title">
-            <h3>1. PDF 文件</h3>
-            <span>输入</span>
-          </div>
-
-          <div class="upload-box">
-            <input
-              id="pdfInput"
-              class="hidden-file"
-              type="file"
-              accept="application/pdf"
-            />
-
-            <button id="pdfSelectButton" class="secondary">
-              选择本地 PDF
-            </button>
-
-            <p id="fileNameText">尚未选择文件</p>
-          </div>
+        <div class="project-actions" aria-label="项目操作">
+          <button id="newProjectButton" class="primary">New Project</button>
+          <button id="searchProjectButton" class="secondary">Search</button>
         </div>
 
-        <div class="section">
-          <div class="section-title">
-            <h3>2. 抽取模式</h3>
-            <span id="modeText">默认抽取</span>
-          </div>
-
-          <div class="mode-options">
-            <label class="mode-option">
-              <input
-                type="radio"
-                name="extractionMode"
-                value="auto"
-                checked
-              />
-              <strong>默认抽取</strong>
-              <span>由系统自动识别实体与关系</span>
-            </label>
-
-            <label class="mode-option">
-              <input
-                type="radio"
-                name="extractionMode"
-                value="custom"
-              />
-              <strong>自定义抽取</strong>
-              <span>指定抽取对象和关系规则</span>
-            </label>
-          </div>
+        <div id="projectSearchPanel" class="project-search-panel hidden">
+          <input id="projectSearchInput" type="search" placeholder="搜索项目" />
         </div>
 
-        <div id="customConfig" class="custom-config hidden">
-          <div class="section">
-            <div class="section-title">
-              <h3>3. 抽取对象</h3>
-              <span id="entityCountText">0 个</span>
-            </div>
-
-            <div id="entityList" class="tag-list"></div>
-
-            <div style="margin-top: 12px;">
-              <button id="openEntityModalButton" class="ghost" style="width:100%;">
-                添加抽取对象
-              </button>
-            </div>
-          </div>
-
-          <div class="section">
-            <div class="section-title">
-              <h3>4. 关系规则</h3>
-              <span id="relationCountText">0 条</span>
-            </div>
-
-            <div id="relationList" class="relation-list"></div>
-
-            <div style="margin-top: 12px;">
-              <button id="openRelationModalButton" class="ghost" style="width:100%;">
-                添加关系规则
-              </button>
-            </div>
-          </div>
-        </div>
+        <div class="sidebar-section-title">Projects</div>
+        <div id="projectList" class="project-list" aria-label="项目列表"></div>
       </div>
 
       <div class="sidebar-footer">
-        <div id="statusBox" class="status">
-          等待上传 PDF。
-        </div>
+        <section class="project-files-panel" aria-label="当前项目文件">
+          <button id="projectFilesToggle" class="project-files-toggle" type="button" aria-expanded="true" aria-controls="projectFilesList">
+            <span>项目文件</span>
+            <span class="project-files-toggle-meta">
+              <strong id="projectFilesCount">0</strong>
+              <span id="projectFilesChevron" aria-hidden="true">⌃</span>
+            </span>
+          </button>
+          <div id="projectFilesList" class="project-files-list"></div>
+        </section>
 
-        <div class="progress-panel" aria-live="polite">
-          <div class="progress-top">
-            <span>项目进度</span>
-            <strong id="progressPercentText">0%</strong>
-          </div>
-          <div
-            class="progress-track"
-            role="progressbar"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            aria-valuenow="0"
-            aria-label="项目进度"
-          >
-            <div id="progressBarFill" class="progress-fill"></div>
-          </div>
-          <div id="progressStepText" class="progress-step">
-            等待开始处理。
-          </div>
+        <div class="sidebar-account">
+          <span>Agent Workspace</span>
+          <strong id="projectCountText">0 projects</strong>
         </div>
-
-        <button id="extractButton" class="primary" style="width:100%;">
-          一键生成知识图谱
-        </button>
       </div>
     </aside>
 
     <main class="main">
-      <div class="header">
-        <h1>知识图谱可视化输出</h1>
-
-        <div class="toolbar">
-          <button id="fitGraphButton" class="secondary">居中图谱</button>
-          <button id="clearGraphButton" class="danger">清空图谱</button>
+      <div class="header project-header">
+        <div>
+          <span class="workspace-eyebrow">Project Agent</span>
+          <h1 id="workspaceTitle">选择或创建项目</h1>
+          <p id="workspaceSubtitle" class="workspace-subtitle">上传文件，选择功能，然后通过 Agent 继续推进项目。</p>
         </div>
+
       </div>
 
-      <div class="graph-area">
-        <div id="graph"></div>
-      </div>
+      <section class="project-shell">
+        <section class="conversation-panel" aria-label="Agent 对话">
+          <section class="agent-chat" aria-label="项目对话 Agent">
+            <section class="feature-workspace" aria-label="功能选择">
+              <div class="feature-grid">
+                <button class="feature-card active" type="button" data-feature="knowledge-graph">
+                  <strong>知识图谱抽取</strong>
+                  <span>抽取实体关系</span>
+                </button>
+                <button class="feature-card" type="button" data-feature="document-qa">
+                  <strong>文档问答</strong>
+                  <span>上下文问答</span>
+                </button>
+                <button class="feature-card" type="button" data-feature="summary">
+                  <strong>文档摘要</strong>
+                  <span>提炼重点</span>
+                </button>
+                <button class="feature-card" type="button" data-feature="report">
+                  <strong>报告生成</strong>
+                  <span>生成报告</span>
+                </button>
+                <button class="feature-card" type="button" data-feature="entity-review">
+                  <strong>实体审核</strong>
+                  <span>校对实体</span>
+                </button>
+                <button class="feature-card" type="button" data-feature="relationship-review">
+                  <strong>关系审核</strong>
+                  <span>校对关系</span>
+                </button>
+              </div>
+            </section>
+
+            <div id="chatMessages" class="chat-messages"></div>
+            <form id="agentChatForm" class="chat-input-row">
+              <input
+                id="pdfInput"
+                class="hidden-file"
+                type="file"
+                accept="application/pdf"
+              />
+              <button id="pdfSelectButton" class="upload-plus-button" type="button" aria-label="上传文件">+</button>
+              <input id="agentChatInput" type="text" placeholder="询问当前项目，或告诉 Agent 下一步要做什么" autocomplete="off" />
+              <button class="primary send-button" type="submit">发送</button>
+            </form>
+            <p id="fileNameText" class="chat-file-name">尚未选择文件</p>
+          </section>
+        </section>
+
+        <aside class="results-panel" aria-label="成果列表">
+          <div class="results-panel-header">
+            <div>
+              <span class="panel-kicker">Results</span>
+              <h2>成果列表</h2>
+            </div>
+            <div id="graphToolbar" class="toolbar hidden">
+              <label class="toolbar-control" for="graphLayoutSelect">
+                <span>视图形式</span>
+                <select id="graphLayoutSelect">
+                  <option value="force">关系图</option>
+                  <option value="tree">树状图</option>
+                </select>
+              </label>
+              <button id="fitGraphButton" class="secondary">居中图谱</button>
+              <button id="clearGraphButton" class="danger">清空图谱</button>
+            </div>
+          </div>
+
+          <div class="graph-area">
+            <div id="configWorkbench" class="config-workbench hidden"></div>
+            <div id="workbenchEmpty" class="workbench-empty hidden"></div>
+            <div id="graph" class="hidden"></div>
+            <div id="resultReview" class="result-review hidden"></div>
+          </div>
+        </aside>
+
+        <div class="internal-flow-controls hidden" aria-hidden="true">
+          <div id="statusBox" class="status">等待上传 PDF。</div>
+          <div class="progress-panel" aria-live="polite">
+            <div class="progress-top">
+              <span>知识图谱抽取进度</span>
+              <strong id="progressPercentText">0%</strong>
+            </div>
+            <div
+              class="progress-track"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              aria-label="知识图谱抽取进度"
+            >
+              <div id="progressBarFill" class="progress-fill"></div>
+            </div>
+            <div id="progressStepText" class="progress-step">等待开始处理。</div>
+          </div>
+          <div id="stepList" class="step-list" aria-label="知识图谱抽取步骤"></div>
+          <strong id="currentStepTitle">配置项目输入</strong>
+          <span id="currentStepHint">上传 PDF，填写摘要和目标。</span>
+          <button id="runStepButton" class="primary" type="button">运行当前步骤</button>
+          <button id="approveStepButton" class="secondary" type="button" disabled>审核通过</button>
+          <button id="resetFlowButton" class="ghost" type="button">重新开始</button>
+        </div>
+      </section>
     </main>
   </div>
 
-  <!-- 添加实体 Modal -->
-  <div id="entityModal" class="modal-mask">
-    <div class="modal">
+  <div id="fileDetailsModal" class="modal-mask" role="dialog" aria-modal="true" aria-labelledby="fileDetailsTitle">
+    <div class="modal file-details-modal">
       <div class="modal-header">
-        <h3>添加抽取对象</h3>
-        <button id="closeEntityModalButton" class="modal-close">×</button>
+        <h3 id="fileDetailsTitle">文件详情</h3>
+        <button id="closeFileDetailsButton" class="modal-close" type="button" aria-label="关闭">×</button>
       </div>
-
-      <div class="modal-body">
-        <div class="form-item">
-          <label>对象类型名称</label>
-          <input id="entityInput" placeholder="例如：系统 / 设备 / 部件 / 故障原因" />
-        </div>
-      </div>
-
+      <div id="fileDetailsBody" class="modal-body"></div>
       <div class="modal-footer">
-        <button id="cancelEntityButton" class="secondary">取消</button>
-        <button id="confirmEntityButton" class="primary">添加</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 添加关系 Modal -->
-  <div id="relationModal" class="modal-mask">
-    <div class="modal">
-      <div class="modal-header">
-        <h3>添加关系规则</h3>
-        <button id="closeRelationModalButton" class="modal-close">×</button>
-      </div>
-
-      <div class="modal-body">
-        <div class="form-item">
-          <label>起点对象类型</label>
-          <select id="fromTypeSelect"></select>
-        </div>
-
-        <div class="form-item">
-          <label>关系名称</label>
-          <input id="relationNameInput" placeholder="例如：包含 / 导致 / 采取措施" />
-        </div>
-
-        <div class="form-item">
-          <label>终点对象类型</label>
-          <select id="toTypeSelect"></select>
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button id="cancelRelationButton" class="secondary">取消</button>
-        <button id="confirmRelationButton" class="primary">添加</button>
+        <button id="confirmFileDetailsButton" class="secondary" type="button">关闭</button>
       </div>
     </div>
   </div>

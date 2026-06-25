@@ -1,6 +1,6 @@
 # 知识图谱抽取应用
 
-这是一个从 PDF 文档生成知识图谱的 Demo 项目。用户在前端上传 PDF，选择默认抽取或自定义抽取规则后，后端会完成文本提取、文本切分、实体关系抽取、图谱清洗、语义合并、质量报告和最终图谱生成，前端会实时显示项目进度并渲染知识图谱。
+这是一个从 PDF 文档生成知识图谱的 Demo 项目。用户在前端上传 PDF，并输入文档摘要和建图目标后，后端会先生成本体草案，再完成文本提取、文本切分、本体实例化、图谱清洗、语义合并、质量报告和最终图谱生成，前端会实时显示项目进度并渲染知识图谱。
 
 ## 项目结构
 
@@ -71,29 +71,30 @@ frontend/index.html
 1. 启动后端服务。
 2. 打开前端页面。
 3. 选择本地 PDF 文件。
-4. 选择抽取模式：
-   - 默认抽取：系统自动识别实体和关系。
-   - 自定义抽取：手动配置抽取对象和关系规则。
-5. 点击“一键生成知识图谱”。
+4. 填写文档摘要和用户目标。
+5. 逐步运行并审核各阶段结果。
 6. 页面会显示总进度条和当前步骤说明，并在完成后渲染图谱。
 
 ## 处理流程
 
-一键生成会按以下阶段执行：
+一键生成会按以下 skill 顺序执行，每个 skill 都是一个可独立注册、描述和执行的流程单元：
 
 1. PDF 文本提取
-2. 文本切分策略分析与切分
-3. 实体和关系抽取
-4. 重复实体和关系清理
-5. 语义相近节点合并
-6. 关系清洗
-7. 图谱质量报告生成
-8. 最终知识图谱生成
+2. 根据文档摘要和用户目标生成本体草案
+3. 文本切分策略分析
+4. 执行文本切分
+5. 本体实例化
+6. 重复实体和关系清理
+7. 语义相近节点合并
+8. 关系清洗
+9. 图谱质量报告生成
+10. 最终知识图谱生成
 
 各阶段结果会保存在 `backend/data/` 下的对应目录中，例如：
 
 - `uploads/`：上传的 PDF
 - `extracted_text/`：提取后的文本
+- `ontology/`：本体草案
 - `chunks/`：文本切分结果
 - `raw_graphs/`：原始图谱
 - `cleaned_graphs/`：去重清洗后的图谱
@@ -106,6 +107,9 @@ frontend/index.html
 
 - `GET /api/health`：检查后端服务是否运行
 - `POST /api/pdf/to-txt`：上传 PDF 并提取文本
+- `POST /api/graph/ontology/draft`：根据文档摘要和用户目标生成本体草案
+- `POST /api/chunk/strategy`：分析切分策略
+- `POST /api/chunk/execute`：执行文本切分
 - `POST /api/chunk/run`：分析切分策略并执行文本切分
 - `POST /api/graph/extract`：抽取实体和关系
 - `POST /api/graph/clean`：清理重复图谱内容
@@ -113,6 +117,7 @@ frontend/index.html
 - `POST /api/graph/relations/clean`：清洗关系
 - `POST /api/graph/quality/report`：生成图谱质量报告
 - `POST /api/graph/final/generate`：生成最终知识图谱
+- `GET /api/pipeline/skills`：查看当前知识抽取流程注册的 skill 列表
 - `POST /api/pipeline/pdf-to-graph`：后端一键完整流程接口
 
 更完整的接口说明可以查看 `backend/docs/API.md` 或 `backend/docs/openapi.json`。

@@ -15,6 +15,8 @@ GRAPH_QUALITY_REPORTS_DIR = DATA_DIR / "graph_quality_reports"
 FINAL_GRAPHS_DIR = DATA_DIR / "final_graphs"
 PROCESSED_DIR = DATA_DIR / "processed"
 STRATEGY_DIR = DATA_DIR / "strategy"
+ONTOLOGY_DIR = DATA_DIR / "ontology"
+EMBEDDINGS_DIR = DATA_DIR / "embeddings"
 LOG_DIR = BASE_DIR / "logs"
 
 
@@ -31,6 +33,8 @@ for directory in (
     FINAL_GRAPHS_DIR,
     PROCESSED_DIR,
     STRATEGY_DIR,
+    ONTOLOGY_DIR,
+    EMBEDDINGS_DIR,
     LOG_DIR,
 ):
     directory.mkdir(parents=True, exist_ok=True)

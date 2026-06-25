@@ -3,7 +3,8 @@ import json
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from fastapi.responses import JSONResponse
 
-from services.pdf_service import convert_uploaded_pdf_to_txt
+from schemas.graph_schema import ExtractedTextUpdateRequest
+from services.pdf_service import convert_uploaded_pdf_to_txt, update_extracted_text
 
 
 router = APIRouter(tags=["upload"])
@@ -58,3 +59,18 @@ async def upload_pdf_to_txt(
     relations: str | None = Form(default=None),
 ):
     return await handle_pdf_to_txt(file, entity_types, relations)
+
+
+@router.post("/api/pdf/text/update")
+def api_update_pdf_text(request: ExtractedTextUpdateRequest):
+    try:
+        return update_extracted_text(
+            extraction_id=request.extraction_id,
+            text=request.text,
+        )
+    except FileNotFoundError as error:
+        raise HTTPException(status_code=404, detail=str(error)) from error
+    except ValueError as error:
+        raise HTTPException(status_code=400, detail=str(error)) from error
+    except Exception as error:
+        raise HTTPException(status_code=500, detail=f"提取文本更新失败：{error}") from error

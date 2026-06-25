@@ -3,6 +3,7 @@ import json
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 
 from services.pipeline_service import run_pdf_to_final_graph_pipeline
+from services.pipeline_skill_service import list_pipeline_skills
 
 
 router = APIRouter(tags=["pipeline"])
@@ -11,6 +12,19 @@ router = APIRouter(tags=["pipeline"])
 @router.get("/pipeline/health")
 def pipeline_health():
     return {"module": "pipeline", "status": "ok"}
+
+
+@router.get("/pipeline/skills")
+def pipeline_skills():
+    return {
+        "success": True,
+        "skills": list_pipeline_skills(),
+    }
+
+
+@router.get("/api/pipeline/skills")
+def api_pipeline_skills():
+    return pipeline_skills()
 
 
 def parse_json_form_field(value: str | None, field_name: str):
@@ -25,7 +39,8 @@ def parse_json_form_field(value: str | None, field_name: str):
 
 async def handle_pdf_to_final_graph(
     file: UploadFile,
-    mode: str = "auto",
+    document_summary: str,
+    user_goal: str,
     entity_types: str | None = None,
     relations: str | None = None,
     allowed_entity_types: str | None = None,
@@ -34,7 +49,8 @@ async def handle_pdf_to_final_graph(
     try:
         return await run_pdf_to_final_graph_pipeline(
             file=file,
-            mode=mode,
+            document_summary=document_summary,
+            user_goal=user_goal,
             entity_types=parse_json_form_field(entity_types, "entity_types"),
             relations=parse_json_form_field(relations, "relations"),
             allowed_entity_types=parse_json_form_field(
@@ -61,7 +77,8 @@ async def handle_pdf_to_final_graph(
 @router.post("/pipeline/pdf-to-graph")
 async def pdf_to_final_graph(
     file: UploadFile = File(...),
-    mode: str = Form(default="auto"),
+    document_summary: str = Form(...),
+    user_goal: str = Form(...),
     entity_types: str | None = Form(default=None),
     relations: str | None = Form(default=None),
     allowed_entity_types: str | None = Form(default=None),
@@ -69,7 +86,8 @@ async def pdf_to_final_graph(
 ):
     return await handle_pdf_to_final_graph(
         file=file,
-        mode=mode,
+        document_summary=document_summary,
+        user_goal=user_goal,
         entity_types=entity_types,
         relations=relations,
         allowed_entity_types=allowed_entity_types,
@@ -80,7 +98,8 @@ async def pdf_to_final_graph(
 @router.post("/api/pipeline/pdf-to-graph")
 async def api_pdf_to_final_graph(
     file: UploadFile = File(...),
-    mode: str = Form(default="auto"),
+    document_summary: str = Form(...),
+    user_goal: str = Form(...),
     entity_types: str | None = Form(default=None),
     relations: str | None = Form(default=None),
     allowed_entity_types: str | None = Form(default=None),
@@ -88,7 +107,8 @@ async def api_pdf_to_final_graph(
 ):
     return await handle_pdf_to_final_graph(
         file=file,
-        mode=mode,
+        document_summary=document_summary,
+        user_goal=user_goal,
         entity_types=entity_types,
         relations=relations,
         allowed_entity_types=allowed_entity_types,

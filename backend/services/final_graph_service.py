@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any
 
 from config import FINAL_GRAPHS_DIR, GRAPH_QUALITY_REPORTS_DIR, RELATION_CLEANED_GRAPHS_DIR
+from services.result_retention_service import cleanup_old_intermediate_results
 from utils.json_utils import read_json, write_json
 
 
@@ -220,7 +221,7 @@ def generate_final_knowledge_graph(extraction_id: str) -> dict[str, Any]:
         "edges": final_edges,
         "skipped_edges": skipped_edges[:50],
         "metadata": {
-            "format": "vis-network-compatible",
+            "format": "antv-g6-adapted",
             "node_fields": ["id", "label", "type"],
             "edge_fields": ["from", "to", "label"],
             "next_stage": "visualization",
@@ -230,9 +231,11 @@ def generate_final_knowledge_graph(extraction_id: str) -> dict[str, Any]:
 
     final_graph_path = get_final_graph_json_path(extraction_id)
     write_json(final_graph_path, final_graph)
+    cleanup_result = cleanup_old_intermediate_results(extraction_id)
 
     return {
         **final_graph,
         "message": "最终知识图谱已生成",
         "final_graph_json_path": str(final_graph_path),
+        "cleanup_result": cleanup_result,
     }

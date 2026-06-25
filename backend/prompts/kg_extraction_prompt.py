@@ -11,9 +11,12 @@ KG_EXTRACTION_PROMPT = """
 你会收到一个 JSON：
 
 {
-  "mode": "auto 或 custom",
+  "mode": "ontology",
   "allowed_entity_types": ["..."],
   "allowed_relation_types": ["..."],
+  "allowed_relations": [
+    { "from": "起点实体类型", "relation": "关系类型", "to": "终点实体类型" }
+  ],
   "ontology_hint": {
     "entity_types": ["主题", "概念", "对象", "事件", "问题", "原因", "结果", "方法", "步骤", "工具", "指标", "条件", "结论", "组织", "人物", "地点", "时间", "文档结构", "其他"],
     "relation_types": ["包含", "属于", "导致", "影响", "解决", "使用", "产生", "依赖", "组成", "解释", "说明", "对应", "适用于", "前置于", "后续于", "对比", "评价", "约束", "输入", "输出", "相关"]
@@ -23,6 +26,8 @@ KG_EXTRACTION_PROMPT = """
     "part_id": "...",
     "title": "...",
     "parent_title": "...",
+    "chapter_title": "...",
+    "section_title": "...",
     "content": "..."
   }
 }
@@ -30,20 +35,16 @@ KG_EXTRACTION_PROMPT = """
 二、抽取范围
 
 1. 只抽取当前 content 中有依据的信息。
-2. title 和 parent_title 可以作为上下文参与理解，也可以作为主题实体，但不要强行建立无意义关系。
+2. title、parent_title、chapter_title、section_title 可以作为上下文参与理解，也可以作为主题实体，但不要强行建立无意义关系。
 3. 如果内容过短、疑似目录、噪声或缺少完整语义，可以返回空 nodes 和 edges，并在 warnings 中说明原因。
 4. 不要编造文本中没有出现或无法直接推断的信息。
 
 三、本体与类型规则
 
-当 mode = "auto"：
-1. 优先使用 ontology_hint 中的实体类型和关系类型。
-2. 如果确实不合适，可以使用更贴切但简洁、通用、可复用的类型。
-3. 不要生成过于零散或领域过窄的类型。
-
-当 mode = "custom"：
-1. 如果 allowed_entity_types 非空，实体 type 必须优先从中选择；无法归类的重要实体可少量使用 "其他"。
-2. 如果 allowed_relation_types 非空，关系 relation 必须优先从中选择；无法表达的重要关系可少量使用 "相关"。
+当 mode = "ontology"：
+1. 如果 allowed_entity_types 非空，实体 type 必须从中选择；不要使用列表外类型，也不要使用 "其他" 兜底。
+2. 如果 allowed_relation_types 非空，关系 relation 必须从中选择；不要使用列表外关系，也不要使用 "相关" 兜底。
+3. 如果 allowed_relations 非空，关系必须同时满足 from / relation / to 三元组约束。
 
 四、实体抽取原则
 
@@ -71,7 +72,9 @@ KG_EXTRACTION_PROMPT = """
   "part_id": "当前 part_id",
   "title": "当前 chunk 标题",
   "parent_title": "上级标题，如果没有则为 null",
-  "extraction_mode": "auto 或 custom",
+  "chapter_title": "章标题，如果没有则为 null",
+  "section_title": "节标题，如果没有则为 null",
+  "extraction_mode": "ontology",
   "nodes": [
     {
       "id": "n1",

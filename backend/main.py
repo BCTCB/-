@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from api import chunk_api, extract_api, graph_api, pipeline_api, upload_api
+from api import agent_api, chunk_api, extract_api, graph_api, pipeline_api, upload_api
 
 
 app = FastAPI(
@@ -19,6 +19,7 @@ app.add_middleware(
 )
 
 app.include_router(upload_api.router)
+app.include_router(agent_api.router)
 app.include_router(extract_api.router)
 app.include_router(chunk_api.router)
 app.include_router(graph_api.router)

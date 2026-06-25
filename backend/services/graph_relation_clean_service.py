@@ -300,8 +300,17 @@ def clean_merged_graph_relations(extraction_id: str) -> dict[str, Any]:
         edges = []
 
     node_names = build_node_name_map(nodes)
-    relation_summaries = summarize_relations(edges, node_names)
-    relation_result = collect_relation_groups(relation_summaries)
+    is_constrained_mode = merged_graph.get("extraction_mode") == "ontology"
+
+    if is_constrained_mode:
+        relation_result = {
+            "relation_groups": [],
+            "warnings": ["本体约束抽取下跳过关系重命名，保留本体草案中的关系名称。"],
+        }
+    else:
+        relation_summaries = summarize_relations(edges, node_names)
+        relation_result = collect_relation_groups(relation_summaries)
+
     relation_groups = relation_result["relation_groups"]
     relation_map = build_relation_map(relation_groups)
     cleaned_edges = clean_edges(edges, relation_map)
