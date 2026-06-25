@@ -6,6 +6,7 @@ from typing import Any
 from config import CHUNKS_DIR, RAW_GRAPHS_DIR
 from prompts.kg_extraction_prompt import KG_EXTRACTION_PROMPT
 from services.llm_service import chat_json
+from services.ontology_service import load_ontology_draft
 from utils.json_utils import extract_json_from_text, read_json, write_json
 
 
@@ -168,11 +169,13 @@ def build_extraction_input(
     mode: str,
     allowed_entity_types: list[str],
     allowed_relation_types: list[str],
+    allowed_relations: list[dict[str, str]],
 ) -> str:
     payload = {
         "mode": mode,
         "allowed_entity_types": allowed_entity_types,
         "allowed_relation_types": allowed_relation_types,
+        "allowed_relations": allowed_relations,
         "ontology_hint": {
             "entity_types": DEFAULT_ENTITY_TYPES,
             "relation_types": DEFAULT_RELATION_TYPES,
@@ -182,10 +185,133 @@ def build_extraction_input(
             "part_id": part_id,
             "title": chunk.get("title"),
             "parent_title": chunk.get("parent_title"),
+            "chapter_title": chunk.get("chapter_title"),
+            "section_title": chunk.get("section_title"),
             "content": part_content,
         },
     }
     return json.dumps(payload, ensure_ascii=False, indent=2)
+
+
+def normalize_allowed_relations(relations: list[dict[str, Any]] | None) -> list[dict[str, str]]:
+    if not isinstance(relations, list):
+        return []
+
+    normalized: list[dict[str, str]] = []
+    seen: set[tuple[str, str, str]] = set()
+
+    for relation in relations:
+        if not isinstance(relation, dict):
+            continue
+
+        source_type = normalize_name(str(relation.get("from", "")))
+        relation_name = normalize_name(str(relation.get("relation", "")))
+        target_type = normalize_name(str(relation.get("to", "")))
+        key = (source_type, relation_name, target_type)
+
+        if not all(key) or key in seen:
+            continue
+
+        seen.add(key)
+        normalized.append(
+            {
+                "from": source_type,
+                "relation": relation_name,
+                "to": target_type,
+            }
+        )
+
+    return normalized
+
+
+def normalize_allowed_names(names: list[str] | None) -> list[str]:
+    if not isinstance(names, list):
+        return []
+
+    normalized: list[str] = []
+    seen: set[str] = set()
+
+    for name in names:
+        normalized_name = normalize_name(str(name))
+
+        if not normalized_name or normalized_name in seen:
+            continue
+
+        seen.add(normalized_name)
+        normalized.append(normalized_name)
+
+    return normalized
+
+
+def filter_constrained_result(
+    part_result: dict[str, Any],
+    allowed_entity_types: list[str],
+    allowed_relation_types: list[str],
+    allowed_relations: list[dict[str, str]],
+) -> dict[str, Any]:
+    allowed_entity_types = normalize_allowed_names(allowed_entity_types)
+    allowed_relation_types = normalize_allowed_names(allowed_relation_types)
+    allowed_relations = normalize_allowed_relations(allowed_relations)
+    allowed_entity_type_set = set(allowed_entity_types)
+    allowed_relation_type_set = set(allowed_relation_types)
+    allowed_relation_set = {
+        (relation["from"], relation["relation"], relation["to"])
+        for relation in allowed_relations
+    }
+
+    nodes = part_result.get("nodes", [])
+    edges = part_result.get("edges", [])
+
+    if not isinstance(nodes, list):
+        nodes = []
+
+    if not isinstance(edges, list):
+        edges = []
+
+    if allowed_entity_type_set:
+        nodes = [
+            node for node in nodes
+            if isinstance(node, dict) and node.get("type") in allowed_entity_type_set
+        ]
+
+    node_by_id = {
+        str(node.get("id", "")): node
+        for node in nodes
+        if isinstance(node, dict) and node.get("id")
+    }
+    filtered_edges: list[dict[str, Any]] = []
+
+    for edge in edges:
+        if not isinstance(edge, dict):
+            continue
+
+        source = str(edge.get("source", ""))
+        target = str(edge.get("target", ""))
+        relation = str(edge.get("relation", ""))
+        source_node = node_by_id.get(source)
+        target_node = node_by_id.get(target)
+
+        if not source_node or not target_node:
+            continue
+
+        if allowed_relation_type_set and relation not in allowed_relation_type_set:
+            continue
+
+        if allowed_relation_set:
+            relation_key = (
+                str(source_node.get("type", "")),
+                relation,
+                str(target_node.get("type", "")),
+            )
+
+            if relation_key not in allowed_relation_set:
+                continue
+
+        filtered_edges.append(edge)
+
+    part_result["nodes"] = nodes
+    part_result["edges"] = filtered_edges
+    return part_result
 
 
 def repair_extraction_result(
@@ -282,6 +408,8 @@ def repair_extraction_result(
         "part_id": part_id,
         "title": chunk.get("title"),
         "parent_title": chunk.get("parent_title"),
+        "chapter_title": chunk.get("chapter_title"),
+        "section_title": chunk.get("section_title"),
         "extraction_mode": mode,
         "nodes": repaired_nodes,
         "edges": repaired_edges,
@@ -321,6 +449,7 @@ def extract_graph_from_part(
     mode: str,
     allowed_entity_types: list[str],
     allowed_relation_types: list[str],
+    allowed_relations: list[dict[str, str]],
 ) -> dict[str, Any]:
     user_prompt = build_extraction_input(
         chunk=chunk,
@@ -329,6 +458,7 @@ def extract_graph_from_part(
         mode=mode,
         allowed_entity_types=allowed_entity_types,
         allowed_relation_types=allowed_relation_types,
+        allowed_relations=allowed_relations,
     )
     response_text = chat_json(
         system_prompt=KG_EXTRACTION_PROMPT,
@@ -336,7 +466,17 @@ def extract_graph_from_part(
         temperature=0.1,
     )
     result = extract_json_from_text(response_text)
-    return repair_extraction_result(result, chunk=chunk, part_id=part_id, mode=mode)
+    part_result = repair_extraction_result(result, chunk=chunk, part_id=part_id, mode=mode)
+
+    if mode == "ontology":
+        part_result = filter_constrained_result(
+            part_result=part_result,
+            allowed_entity_types=allowed_entity_types,
+            allowed_relation_types=allowed_relation_types,
+            allowed_relations=allowed_relations,
+        )
+
+    return part_result
 
 
 def build_extraction_report(
@@ -376,14 +516,154 @@ def build_extraction_report(
     }
 
 
+def normalize_instance_nodes(raw_nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    if not isinstance(raw_nodes, list):
+        raise ValueError("nodes 必须是数组")
+
+    normalized_nodes: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
+
+    for index, node in enumerate(raw_nodes, start=1):
+        if not isinstance(node, dict):
+            continue
+
+        node_id = normalize_name(str(node.get("id") or f"rn{index}"))
+        name = normalize_name(str(node.get("name") or node.get("label") or ""))
+        node_type = normalize_name(str(node.get("type") or "其他"))
+
+        if not node_id or not name or node_id in seen_ids:
+            continue
+
+        seen_ids.add(node_id)
+        normalized_nodes.append(
+            {
+                **node,
+                "id": node_id,
+                "name": name,
+                "canonical_name": normalize_name(
+                    str(node.get("canonical_name") or name)
+                ),
+                "type": node_type,
+                "description": normalize_text(str(node.get("description", "")))[:180],
+                "evidence": truncate_evidence(node.get("evidence")),
+            }
+        )
+
+    if not normalized_nodes:
+        raise ValueError("请至少保留一个实例节点")
+
+    return normalized_nodes
+
+
+def normalize_instance_edges(
+    raw_edges: list[dict[str, Any]],
+    node_ids: set[str],
+) -> list[dict[str, Any]]:
+    if not isinstance(raw_edges, list):
+        raise ValueError("edges 必须是数组")
+
+    normalized_edges: list[dict[str, Any]] = []
+    seen_keys: set[tuple[str, str, str]] = set()
+
+    for index, edge in enumerate(raw_edges, start=1):
+        if not isinstance(edge, dict):
+            continue
+
+        edge_id = normalize_name(str(edge.get("id") or f"re{index}"))
+        source = normalize_name(str(edge.get("source") or edge.get("from") or ""))
+        target = normalize_name(str(edge.get("target") or edge.get("to") or ""))
+        relation = normalize_name(str(edge.get("relation") or edge.get("label") or "相关"))
+        key = (source, relation, target)
+
+        if not edge_id or not relation or source == target:
+            continue
+
+        if source not in node_ids or target not in node_ids or key in seen_keys:
+            continue
+
+        seen_keys.add(key)
+        normalized_edges.append(
+            {
+                **edge,
+                "id": edge_id,
+                "source": source,
+                "target": target,
+                "relation": relation,
+                "description": normalize_text(str(edge.get("description", "")))[:180],
+                "evidence": truncate_evidence(edge.get("evidence")),
+            }
+        )
+
+    return normalized_edges
+
+
+def update_graph_instantiation(
+    extraction_id: str,
+    nodes: list[dict[str, Any]],
+    edges: list[dict[str, Any]],
+) -> dict[str, Any]:
+    raw_graph_json_path = get_raw_graph_json_path(extraction_id)
+    raw_graph = read_json(raw_graph_json_path)
+
+    if not isinstance(raw_graph, dict):
+        raise ValueError("raw graph 必须是 JSON object")
+
+    normalized_nodes = normalize_instance_nodes(nodes)
+    normalized_edges = normalize_instance_edges(
+        edges,
+        node_ids={node["id"] for node in normalized_nodes},
+    )
+    report = build_extraction_report(
+        chunks=[],
+        part_results=raw_graph.get("part_results", []),
+        skipped_chunks=raw_graph.get("skipped_chunks", []),
+        nodes=normalized_nodes,
+        edges=normalized_edges,
+    )
+    previous_report = raw_graph.get("report", {})
+
+    if isinstance(previous_report, dict):
+        report["chunk_count"] = previous_report.get("chunk_count", report["chunk_count"])
+        report["processed_parts"] = previous_report.get("processed_parts", report["processed_parts"])
+        report["skipped_chunks"] = previous_report.get("skipped_chunks", report["skipped_chunks"])
+        report["warning_count"] = previous_report.get("warning_count", report["warning_count"])
+        report["skipped_chunk_preview"] = previous_report.get(
+            "skipped_chunk_preview",
+            report["skipped_chunk_preview"],
+        )
+
+    raw_graph["nodes"] = normalized_nodes
+    raw_graph["edges"] = normalized_edges
+    raw_graph["report"] = report
+    raw_graph["instance_review"] = {
+        "status": "edited_by_user",
+        "node_count": len(normalized_nodes),
+        "edge_count": len(normalized_edges),
+    }
+
+    write_json(raw_graph_json_path, raw_graph)
+
+    return {
+        "success": True,
+        "message": "本体实例化结果已保存",
+        "extraction_id": extraction_id,
+        "raw_graph_json_path": str(raw_graph_json_path),
+        "report": report,
+        "nodes": normalized_nodes,
+        "edges": normalized_edges,
+        "next_stage": "graph_merge",
+    }
+
+
 def execute_graph_extraction_from_chunks(
     extraction_id: str,
-    mode: str = "auto",
+    mode: str = "ontology",
     allowed_entity_types: list[str] | None = None,
     allowed_relation_types: list[str] | None = None,
+    allowed_relations: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    if mode not in {"auto", "custom"}:
-        raise ValueError("mode 只能是 auto 或 custom")
+    if mode != "ontology":
+        raise ValueError("mode 只能是 ontology")
 
     chunks_json_path = get_chunks_json_path(extraction_id)
     chunks_payload = read_json(chunks_json_path)
@@ -392,8 +672,17 @@ def execute_graph_extraction_from_chunks(
     if not isinstance(chunks, list) or not chunks:
         raise RuntimeError("图谱抽取失败：未找到可用 chunks")
 
-    allowed_entity_types = allowed_entity_types or []
-    allowed_relation_types = allowed_relation_types or []
+    ontology_draft = load_ontology_draft(extraction_id)
+
+    if mode == "ontology" and ontology_draft:
+        ontology_payload = ontology_draft.get("ontology", {})
+        allowed_entity_types = ontology_payload.get("entity_types", [])
+        allowed_relation_types = ontology_payload.get("relation_types", [])
+        allowed_relations = ontology_payload.get("relations", [])
+
+    allowed_entity_types = normalize_allowed_names(allowed_entity_types)
+    allowed_relation_types = normalize_allowed_names(allowed_relation_types)
+    allowed_relations = normalize_allowed_relations(allowed_relations)
 
     part_results: list[dict[str, Any]] = []
     skipped_chunks: list[dict[str, Any]] = []
@@ -428,6 +717,7 @@ def execute_graph_extraction_from_chunks(
                     mode=mode,
                     allowed_entity_types=allowed_entity_types,
                     allowed_relation_types=allowed_relation_types,
+                    allowed_relations=allowed_relations,
                 )
             except Exception as error:
                 part_result = {
@@ -435,6 +725,8 @@ def execute_graph_extraction_from_chunks(
                     "part_id": part_id,
                     "title": chunk.get("title"),
                     "parent_title": chunk.get("parent_title"),
+                    "chapter_title": chunk.get("chapter_title"),
+                    "section_title": chunk.get("section_title"),
                     "extraction_mode": mode,
                     "nodes": [],
                     "edges": [],
@@ -465,7 +757,8 @@ def execute_graph_extraction_from_chunks(
         "extraction_mode": mode,
         "allowed_entity_types": allowed_entity_types,
         "allowed_relation_types": allowed_relation_types,
-        "ontology": {
+        "allowed_relations": allowed_relations,
+        "ontology": ontology_draft.get("ontology") if ontology_draft else {
             "entity_types": DEFAULT_ENTITY_TYPES,
             "relation_types": DEFAULT_RELATION_TYPES,
         },
@@ -482,11 +775,13 @@ def execute_graph_extraction_from_chunks(
 
     return {
         "success": True,
-        "message": "知识图谱抽取完成，raw graph 已保存供后续合并使用",
+        "message": "本体实例化完成，raw graph 已保存供后续处理使用",
         "extraction_id": extraction_id,
         "chunks_json_path": str(chunks_json_path),
         "raw_graph_json_path": str(raw_graph_json_path),
         "raw_graph_jsonl_path": str(raw_graph_jsonl_path),
         "report": report,
+        "nodes": all_nodes,
+        "edges": all_edges,
         "next_stage": "graph_merge",
     }

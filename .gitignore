@@ -1,0 +1,6 @@
+backend/.deps/
+backend/data/models/
+backend/data/embeddings/
+__pycache__/
+*.pyc
+.DS_Store

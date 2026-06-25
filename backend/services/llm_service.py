@@ -59,3 +59,28 @@ def chat_json(
         raise ValueError("模型返回内容为空")
 
     return response_text
+
+
+def chat_text(
+    system_prompt: str,
+    messages: list[dict[str, str]],
+    model: str | None = None,
+    temperature: float = 0.4,
+) -> str:
+    client = get_deepseek_client()
+
+    completion: Any = client.chat.completions.create(
+        model=model or os.getenv("DEEPSEEK_MODEL", DEFAULT_MODEL_NAME),
+        messages=[
+            {"role": "system", "content": system_prompt},
+            *messages,
+        ],
+        temperature=temperature,
+    )
+
+    response_text = completion.choices[0].message.content
+
+    if response_text is None:
+        raise ValueError("模型返回内容为空")
+
+    return response_text

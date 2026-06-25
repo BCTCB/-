@@ -1,11 +1,15 @@
 from fastapi import APIRouter, HTTPException
 
-from schemas.chunk_schema import ChunkExecutionRequest, SplitStrategyRequest
+from schemas.chunk_schema import ChunkExecutionRequest, RagSearchRequest, SplitStrategyRequest
 from services.chunk_service import (
     analyze_split_strategy_from_extraction,
     analyze_strategy_and_execute_chunking,
     execute_chunking_from_extraction,
 )
+from services.rag_embedding_service import generate_rag_embeddings_from_chunks
+from services.rag_chunk_strategy_service import analyze_rag_split_strategy_from_extraction
+from services.rag_chunk_strategy_service import execute_rag_chunking_from_extraction
+from services.rag_search_service import search_rag_chunks
 
 
 router = APIRouter(tags=["chunk"])
@@ -63,3 +67,70 @@ def run_strategy_and_chunking(request: ChunkExecutionRequest):
 @router.post("/api/chunk/run")
 def api_run_strategy_and_chunking(request: ChunkExecutionRequest):
     return run_strategy_and_chunking(request)
+
+
+@router.post("/rag/chunk/strategy")
+def create_rag_split_strategy(request: SplitStrategyRequest):
+    try:
+        return analyze_rag_split_strategy_from_extraction(request.extraction_id)
+    except FileNotFoundError as error:
+        raise HTTPException(status_code=404, detail=str(error)) from error
+    except RuntimeError as error:
+        raise HTTPException(status_code=500, detail=str(error)) from error
+    except Exception as error:
+        raise HTTPException(status_code=500, detail=f"RAG 切分策略分析失败：{error}") from error
+
+
+@router.post("/api/rag/chunk/strategy")
+def api_create_rag_split_strategy(request: SplitStrategyRequest):
+    return create_rag_split_strategy(request)
+
+
+@router.post("/rag/chunk/execute")
+def execute_rag_chunking(request: ChunkExecutionRequest):
+    try:
+        return execute_rag_chunking_from_extraction(request.extraction_id)
+    except FileNotFoundError as error:
+        raise HTTPException(status_code=404, detail=str(error)) from error
+    except Exception as error:
+        raise HTTPException(status_code=500, detail=f"RAG 文本切分失败：{error}") from error
+
+
+@router.post("/api/rag/chunk/execute")
+def api_execute_rag_chunking(request: ChunkExecutionRequest):
+    return execute_rag_chunking(request)
+
+
+@router.post("/rag/embedding/run")
+def run_rag_embedding(request: ChunkExecutionRequest):
+    try:
+        return generate_rag_embeddings_from_chunks(request.extraction_id)
+    except FileNotFoundError as error:
+        raise HTTPException(status_code=404, detail=str(error)) from error
+    except Exception as error:
+        raise HTTPException(status_code=500, detail=f"RAG 向量化失败：{error}") from error
+
+
+@router.post("/api/rag/embedding/run")
+def api_run_rag_embedding(request: ChunkExecutionRequest):
+    return run_rag_embedding(request)
+
+
+@router.post("/rag/search")
+def rag_search(request: RagSearchRequest):
+    try:
+        return search_rag_chunks(
+            extraction_id=request.extraction_id,
+            query=request.query,
+            top_k=request.top_k,
+            min_score=request.min_score,
+        )
+    except FileNotFoundError as error:
+        raise HTTPException(status_code=404, detail=str(error)) from error
+    except Exception as error:
+        raise HTTPException(status_code=500, detail=f"RAG 检索失败：{error}") from error
+
+
+@router.post("/api/rag/search")
+def api_rag_search(request: RagSearchRequest):
+    return rag_search(request)

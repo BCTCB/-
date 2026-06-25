@@ -58,7 +58,7 @@ strategy_level 只能从以下值中选择：
 字段格式如下：
 
 {
-  "split_mode": "heading_regex / two_level_regex / fixed_length",
+  "split_mode": "heading_regex / two_level_regex / chapter_section_question / fixed_length",
   "primary_unit_name": "一级切分单元名称",
   "secondary_unit_name": "二级切分单元名称，如果没有则为 null",
   "primary_start_patterns": [
@@ -73,12 +73,23 @@ strategy_level 只能从以下值中选择：
     "上级标题正则1",
     "上级标题正则2"
   ],
+  "chapter_start_patterns": [
+    "章标题正则，chapter_section_question 模式使用"
+  ],
+  "section_start_patterns": [
+    "节标题正则，chapter_section_question 模式使用"
+  ],
+  "question_start_patterns": [
+    "问题编号标题正则，chapter_section_question 模式使用"
+  ],
   "end_boundary_rule": "next_same_level_start / next_primary_or_secondary_start / document_end",
   "keep_parent_context": true,
   "metadata_fields": [
     "chunk_id",
     "title",
     "parent_title",
+    "chapter_title",
+    "section_title",
     "start_char",
     "end_char",
     "content"
@@ -103,6 +114,8 @@ strategy_level 只能从以下值中选择：
 8. 如果资料中有类似“案例3-1”“例子 1”“问题一”“实验2”等结构，应为它们生成对应正则。
 9. 如果资料中有章节标题，应放入 parent_context_patterns 或 primary_start_patterns。
 10. 如果不确定具体标题词，不要编造；可以使用通用编号标题规则。
+11. 如果资料是教材问答式结构，例如“第一章 泵的分类 / 第一节 叶片式泵 / 1. 什么叫叶片式泵？”，优先使用 chapter_section_question，最终切分单元应是每个问题编号及其答案，章和节作为上下文元数据。
+12. 不要把目录页中的点线页码条目当作正文切分边界，例如“第一节 叶片式泵 ........ (1)”应视为目录噪声。
 
 ## 推荐正则示例
 
@@ -111,6 +124,11 @@ strategy_level 只能从以下值中选择：
 
 编号小节：
 "^\\\\d+(?:\\\\.\\\\d+)*[、.．]?\\\\s+.{2,80}$"
+
+章-节-问题型教材：
+章标题 "^第\\\\s*[一二三四五六七八九十百千万\\\\d]+\\\\s*章\\\\s+.{1,80}$"
+节标题 "^第\\\\s*[一二三四五六七八九十百千万\\\\d]+\\\\s*节\\\\s+.{1,80}$"
+问题标题 "^\\\\d+[、.．]\\\\s*.{2,80}[？?]\\\\s*$"
 
 案例：
 "^案例\\\\s*[一二三四五六七八九十百千万\\\\d]+(?:[-－—.]\\\\d+)*\\\\s*.{0,100}$"
@@ -160,7 +178,7 @@ JSON 格式如下：
     ]
   },
   "executable_split_config": {
-    "split_mode": "heading_regex / two_level_regex / fixed_length",
+    "split_mode": "heading_regex / two_level_regex / chapter_section_question / fixed_length",
     "primary_unit_name": "一级切分单元名称",
     "secondary_unit_name": "二级切分单元名称，如果没有则为 null",
     "primary_start_patterns": [
@@ -172,12 +190,23 @@ JSON 格式如下：
     "parent_context_patterns": [
       "上级标题正则，如果没有则为空数组"
     ],
+    "chapter_start_patterns": [
+      "chapter_section_question 模式下的章标题正则；其他模式可为空数组"
+    ],
+    "section_start_patterns": [
+      "chapter_section_question 模式下的节标题正则；其他模式可为空数组"
+    ],
+    "question_start_patterns": [
+      "chapter_section_question 模式下的问题编号正则；其他模式可为空数组"
+    ],
     "end_boundary_rule": "next_same_level_start / next_primary_or_secondary_start / document_end",
     "keep_parent_context": true,
     "metadata_fields": [
       "chunk_id",
       "title",
       "parent_title",
+      "chapter_title",
+      "section_title",
       "start_char",
       "end_char",
       "content"

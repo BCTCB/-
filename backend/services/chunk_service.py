@@ -23,6 +23,18 @@ GENERIC_HEADING_PATTERNS = [
     r"^[A-Z][、.．]\s+.{2,80}$",
 ]
 
+DEFAULT_CHAPTER_PATTERNS = [
+    r"^第\s*[一二三四五六七八九十百千万\d]+\s*章\s+.{1,80}$",
+]
+
+DEFAULT_SECTION_PATTERNS = [
+    r"^第\s*[一二三四五六七八九十百千万\d]+\s*节\s+.{1,80}$",
+]
+
+DEFAULT_QUESTION_PATTERNS = [
+    r"^\d+[、.．]\s*.{2,80}[？?]\s*$",
+]
+
 
 def read_txt_file(file_path: Path) -> str:
     if not file_path.exists():
@@ -47,7 +59,63 @@ def clean_text_for_chunking(text: str) -> str:
     text = text.replace("－", "-").replace("—", "-").replace("–", "-")
     text = re.sub(r"\n{3,}", "\n\n", text)
     lines = [line.strip() for line in text.split("\n")]
+    lines = remove_table_of_contents_lines(lines)
     return "\n".join(lines).strip()
+
+
+def is_table_of_contents_line(line: str) -> bool:
+    if not line:
+        return False
+
+    normalized = line.replace("…", ".").replace("·", ".")
+
+    if re.fullmatch(r"目\s*录", normalized):
+        return True
+
+    dot_count = normalized.count(".")
+    has_trailing_page = bool(
+        re.search(r"(?:\(|（)?\s*[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ\d]+\s*(?:\)|）)?\s*$", normalized)
+    )
+    has_toc_leader = bool(re.search(r"[.\-_\s]{4,}", normalized))
+
+    if has_trailing_page and has_toc_leader:
+        return True
+
+    if dot_count >= 4 and len(normalized) <= 180:
+        return True
+
+    return False
+
+
+def remove_table_of_contents_lines(lines: list[str]) -> list[str]:
+    cleaned = []
+    in_toc_block = False
+    toc_line_count = 0
+
+    for line in lines:
+        if re.fullmatch(r"目\s*录", line):
+            in_toc_block = True
+            toc_line_count = 0
+            continue
+
+        if in_toc_block:
+            if is_table_of_contents_line(line):
+                toc_line_count += 1
+                continue
+
+            if toc_line_count >= 3 and re.match(r"^第\s*[一二三四五六七八九十百千万\d]+\s*章", line):
+                in_toc_block = False
+            elif toc_line_count < 3:
+                in_toc_block = False
+            else:
+                continue
+
+        if is_table_of_contents_line(line):
+            continue
+
+        cleaned.append(line)
+
+    return cleaned
 
 
 def extract_structure_clues(text: str) -> dict[str, Any]:
@@ -179,6 +247,8 @@ def validate_and_repair_strategy(result: dict[str, Any]) -> dict[str, Any]:
                 "chunk_id",
                 "title",
                 "parent_title",
+                "chapter_title",
+                "section_title",
                 "start_char",
                 "end_char",
                 "content",
@@ -202,7 +272,16 @@ def validate_and_repair_strategy(result: dict[str, Any]) -> dict[str, Any]:
     config.setdefault("keep_parent_context", True)
     config.setdefault(
         "metadata_fields",
-        ["chunk_id", "title", "parent_title", "start_char", "end_char", "content"],
+        [
+            "chunk_id",
+            "title",
+            "parent_title",
+            "chapter_title",
+            "section_title",
+            "start_char",
+            "end_char",
+            "content",
+        ],
     )
     config.setdefault(
         "fallback",
@@ -383,6 +462,21 @@ def find_nearest_parent_title(
     return parent_title
 
 
+def find_containing_boundary(
+    boundaries: list[dict[str, Any]],
+    start: int,
+) -> dict[str, Any] | None:
+    containing = None
+
+    for boundary in boundaries:
+        if boundary["start"] <= start:
+            containing = boundary
+        else:
+            break
+
+    return containing
+
+
 def normalize_title_for_id(title: str) -> str:
     title = title.strip()
     title = re.sub(r"\s+", "_", title)
@@ -523,6 +617,92 @@ def split_by_two_level_regex(text: str, config: dict[str, Any]) -> list[dict[str
     return final_chunks
 
 
+def get_config_patterns(
+    config: dict[str, Any],
+    key: str,
+    default_patterns: list[str],
+) -> list[str]:
+    patterns = config.get(key)
+
+    if isinstance(patterns, list) and patterns:
+        return patterns
+
+    return default_patterns
+
+
+def split_by_chapter_section_question(text: str, config: dict[str, Any]) -> list[dict[str, Any]]:
+    chapter_patterns = get_config_patterns(config, "chapter_start_patterns", DEFAULT_CHAPTER_PATTERNS)
+    section_patterns = get_config_patterns(config, "section_start_patterns", DEFAULT_SECTION_PATTERNS)
+    question_patterns = get_config_patterns(config, "question_start_patterns", DEFAULT_QUESTION_PATTERNS)
+
+    chapter_boundaries = find_matches_by_patterns(text, chapter_patterns)
+    section_boundaries = find_matches_by_patterns(text, section_patterns)
+    question_boundaries = find_matches_by_patterns(text, question_patterns)
+
+    if not chapter_boundaries or not question_boundaries:
+        return []
+
+    chunks = []
+
+    for index, question in enumerate(question_boundaries, start=1):
+        start = question["start"]
+
+        if index < len(question_boundaries):
+            end = question_boundaries[index]["start"]
+        else:
+            end = len(text)
+
+        chapter = find_containing_boundary(chapter_boundaries, start)
+        section = find_containing_boundary(section_boundaries, start)
+
+        if not chapter:
+            continue
+
+        next_chapter = None
+        for boundary in chapter_boundaries:
+            if boundary["start"] > start:
+                next_chapter = boundary
+                break
+
+        next_section = None
+        for boundary in section_boundaries:
+            if boundary["start"] > start:
+                next_section = boundary
+                break
+
+        if next_chapter and next_chapter["start"] < end:
+            end = next_chapter["start"]
+
+        if next_section and next_section["start"] < end:
+            end = next_section["start"]
+
+        content = text[start:end].strip()
+
+        if not content:
+            continue
+
+        section_title = section["title"] if section else None
+        chapter_title = chapter["title"]
+        title = question["title"]
+
+        chunks.append(
+            {
+                "chunk_id": f"chapter_section_question_{index:04d}_{normalize_title_for_id(title)}",
+                "split_type": "chapter_section_question",
+                "title": title,
+                "parent_title": section_title or chapter_title,
+                "chapter_title": chapter_title,
+                "section_title": section_title,
+                "start_char": start,
+                "end_char": end,
+                "char_count": len(content),
+                "content": content,
+            }
+        )
+
+    return chunks
+
+
 def split_by_generic_heading(text: str) -> list[dict[str, Any]]:
     boundaries = find_matches_by_patterns(text, GENERIC_HEADING_PATTERNS)
     return split_by_boundaries(
@@ -579,6 +759,8 @@ def split_text_by_config(text: str, config: dict[str, Any]) -> list[dict[str, An
         chunks = split_by_heading_regex(text, config)
     elif split_mode == "two_level_regex":
         chunks = split_by_two_level_regex(text, config)
+    elif split_mode in {"chapter_section_question", "three_level_regex"}:
+        chunks = split_by_chapter_section_question(text, config)
     elif split_mode == "fixed_length":
         max_chars = fallback.get("max_chars", 3000)
         overlap = fallback.get("overlap", 300)
@@ -635,6 +817,8 @@ def build_split_report(chunks: list[dict[str, Any]]) -> dict[str, Any]:
                 "chunk_id": chunk.get("chunk_id"),
                 "title": chunk.get("title"),
                 "parent_title": chunk.get("parent_title"),
+                "chapter_title": chunk.get("chapter_title"),
+                "section_title": chunk.get("section_title"),
                 "chars": chunk.get("char_count"),
             }
             for chunk in chunks[:5]
@@ -663,6 +847,7 @@ def analyze_split_strategy_from_extraction(extraction_id: str) -> dict[str, Any]
         "extraction_id": extraction_id,
         "source_txt_path": str(txt_path),
         "strategy_path": str(strategy_path),
+        "strategy": split_strategy,
         "next_stage": "chunk_generation",
     }
 

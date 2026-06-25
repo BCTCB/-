@@ -1,11 +1,30 @@
 (function () {
-  const { DEFAULT_ENTITY_TYPES, DEFAULT_RELATIONS } = window.KGConfig;
-
   window.KGState = {
+    activeProjectId: "",
+    activeConversationId: "",
+    expandedProjectIds: [],
+    projectSearchQuery: "",
+    projects: [],
+    projectFilesCollapsed: false,
+    chatMessages: [],
+    isAgentChatting: false,
     selectedPdfFile: null,
     network: null,
-    extractionMode: "auto",
-    entityTypes: [...DEFAULT_ENTITY_TYPES],
-    relations: DEFAULT_RELATIONS.map(relation => ({ ...relation }))
+    graphResizeObserver: null,
+    currentGraphData: null,
+    graphLayoutMode: "force",
+    extractionId: "",
+    activeFeature: "",
+    documentSummary: "",
+    userGoal: "",
+    entityTypes: [],
+    relationTypes: [],
+    relations: [],
+    ontologyDesignNotes: [],
+    currentStepIndex: 0,
+    approvedStepIndex: -1,
+    stepResults: [],
+    artifacts: [],
+    activeArtifactId: ""
   };
 })();

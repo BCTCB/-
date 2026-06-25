@@ -2,5 +2,11 @@ fastapi
 uvicorn
 python-multipart
 pymupdf
+pytesseract
+Pillow
 openai
 python-dotenv
+sentence-transformers==5.6.0
+transformers==4.57.1
+huggingface-hub<1.0
+torch
